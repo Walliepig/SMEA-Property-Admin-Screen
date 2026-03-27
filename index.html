@@ -1,285 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Property Admin Screen</title>
-  <style>
-    :root{
-      --gold:#E1BE4A;
-      --gold-dark:#C9A227;
-      --slate:#2F3542;
-      --slate-2:#3b4252;
-      --bg:#eef1f3;
-      --card:#ffffff;
-      --line:#d7dbde;
-      --text:#1f252b;
-      --muted:#5f6a74;
-      --shadow:0 18px 36px rgba(0,0,0,.10);
-      --radius:20px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family:Lato, Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:linear-gradient(180deg, var(--slate) 0 280px, var(--bg) 280px 100%);
-    }
-    .page{
-      min-height:100vh;
-      padding:24px 16px 42px;
-    }
-    .shell{
-      max-width:1180px;
-      margin:0 auto;
-    }
-    .brand{
-      text-align:center;
-      color:#fff;
-      margin-bottom:20px;
-    }
-    .brand .logo{
-      width:min(120px,30vw);
-      display:block;
-      margin:0 auto 14px;
-      height:auto;
-    }
-    .brand h1{
-      margin:0 0 8px;
-      font-family:"Big Caslon","Big Caslon Medium",Georgia,"Times New Roman",serif;
-      font-size:clamp(2rem, 2vw + 1.1rem, 2.8rem);
-      font-weight:500;
-      line-height:1.02;
-      color:#fff;
-    }
-    .brand p{
-      margin:0 auto;
-      max-width:760px;
-      color:rgba(255,255,255,.88);
-      line-height:1.45;
-      font-size:1rem;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Admin Screen</title>
 
-    .layout{
-      display:grid;
-      grid-template-columns:2fr 1fr;
-      gap:22px;
-      align-items:start;
-    }
-    .stack{
-      display:grid;
-      gap:22px;
-    }
-    .card{
-      background:var(--card);
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(0,0,0,.04);
-      padding:20px;
-    }
-    .card h2{
-      margin:0 0 14px;
-      font-size:1.5rem;
-      line-height:1.15;
-      font-weight:800;
-      color:#18202a;
-    }
-    .sub{
-      margin:0 0 14px;
-      color:var(--muted);
-      font-size:.95rem;
-      line-height:1.45;
-    }
+<style>
+body {
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg,#2F3542 0%, #eef1f3 100%);
+}
 
-    .tile-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:12px;
-    }
-    .side-grid{
-      display:grid;
-      gap:10px;
-    }
+.container {
+  max-width:1100px;
+  margin:0 auto;
+  padding:30px 20px 60px;
+}
 
-    .tile{
-      appearance:none;
-      width:100%;
-      border:1px solid var(--line);
-      background:#fafbfc;
-      color:var(--text);
-      border-radius:16px;
-      padding:16px 14px;
-      text-align:left;
-      cursor:pointer;
-      transition:all .15s ease;
-    }
-    .tile:hover{
-      transform:translateY(-1px);
-      box-shadow:0 8px 16px rgba(0,0,0,.06);
-      background:#fff;
-    }
-    .tile-title{
-      font-weight:800;
-      font-size:1rem;
-      margin-bottom:4px;
-    }
-    .tile-note{
-      color:var(--muted);
-      font-size:.87rem;
-      line-height:1.35;
-    }
+h1 {
+  text-align:center;
+  color:#fff;
+  margin-bottom:30px;
+  font-size:34px;
+}
 
-    .action-row{
-      display:grid;
-      gap:12px;
-    }
-    .action{
-      appearance:none;
-      width:100%;
-      border:none;
-      border-radius:16px;
-      padding:16px 16px;
-      text-align:left;
-      cursor:pointer;
-      font-weight:800;
-      font-size:1rem;
-      transition:all .15s ease;
-    }
-    .action:hover{
-      transform:translateY(-1px);
-      box-shadow:0 8px 16px rgba(0,0,0,.08);
-    }
-    .action.primary{
-      background:linear-gradient(180deg, #E6C65A 0%, #D4AF37 100%);
-      color:#1d2328;
-    }
-    .action.secondary{
-      background:var(--slate);
-      color:#fff;
-    }
-    .hint{
-      margin-top:12px;
-      font-size:.88rem;
-      color:var(--muted);
-    }
+.grid {
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+}
 
-    @media (max-width: 900px){
-      .layout{
-        grid-template-columns:1fr;
-      }
-      .tile-grid{
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+.card {
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-top:0;
+  margin-bottom:15px;
+}
+
+.btn-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.btn {
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  background:#f7f7f7;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.btn:hover {
+  background:#fff;
+  border-color:#c9a227;
+}
+
+.full {
+  grid-column: span 2;
+}
+
+.primary {
+  background:linear-gradient(180deg,#E6C65A,#D4AF37);
+  border:none;
+}
+
+.secondary {
+  background:#2F3542;
+  color:#fff;
+  border:none;
+}
+
+.sidebar .btn {
+  width:100%;
+  margin-bottom:10px;
+}
+
+@media(max-width:800px){
+  .grid {
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <div class="shell">
-      <div class="brand">
-        <img src="SM Main Logo.png" alt="Stephanie Macnab Estate Agent" class="logo">
-        <h1>Property Admin Screen</h1>
-        <p>Internal dashboard for quick links, research tools and client app launch screens.</p>
-      </div>
 
-      <div class="layout">
-        <div class="stack">
-          <section class="card">
-            <h2>Quick Links</h2>
-            <p class="sub">Opens each system in a new tab.</p>
-            <div class="tile-grid">
-              <button class="tile" onclick="openExternal('#')">
-                <div class="tile-title">Rezi</div>
-                <div class="tile-note">CRM login</div>
-              </button>
+<div class="container">
 
-              <button class="tile" onclick="openExternal('#')">
-                <div class="tile-title">Vouch</div>
-                <div class="tile-note">AML / onboarding</div>
-              </button>
+<h1>Property Admin Screen</h1>
 
-              <button class="tile" onclick="openExternal('#')">
-                <div class="tile-title">Countrywide Signs</div>
-                <div class="tile-note">Board contractor</div>
-              </button>
+<div class="grid">
 
-              <button class="tile" onclick="openExternal('#')">
-                <div class="tile-title">VERIPHY</div>
-                <div class="tile-note">Checks / compliance</div>
-              </button>
+  <!-- LEFT SIDE -->
+  <div>
 
-              <button class="tile" onclick="openExternal('#')">
-                <div class="tile-title">Rightmove Plus</div>
-                <div class="tile-note">Portal dashboard</div>
-              </button>
+    <!-- QUICK LINKS -->
+    <div class="card">
+      <h2>Quick Links</h2>
 
-              <button class="tile" onclick="openExternal('#')">
-                <div class="tile-title">Best Price Guide</div>
-                <div class="tile-note">Pricing support</div>
-              </button>
+      <div class="btn-grid">
+        <button class="btn" onclick="openLink('https://rezi.cloud')">Rezi</button>
+        <button class="btn" onclick="openLink('https://vouch.co.uk')">Vouch</button>
 
-              <button class="tile" onclick="openExternal('#')">
-                <div class="tile-title">Property Performance</div>
-                <div class="tile-note">Stats / activity</div>
-              </button>
-            </div>
-          </section>
+        <button class="btn" onclick="openLink('https://countrywide-signs.co.uk')">Countrywide</button>
+        <button class="btn" onclick="openLink('https://veriphy.com')">VERIPHY</button>
 
-          <section class="card">
-            <h2>Client Apps</h2>
-            <p class="sub">Open a launcher screen to prepare the client link cleanly.</p>
-            <div class="action-row">
-              <button class="action primary" onclick="openInternal('/property-launcher.html')">
-                Launch Property Info App
-              </button>
-              <button class="action secondary" onclick="openInternal('/aml-launcher.html')">
-                Launch AML Upload App
-              </button>
-            </div>
-            <div class="hint">Launcher pages open in a new tab. Keep this dashboard open as your control screen.</div>
-          </section>
-        </div>
+        <button class="btn" onclick="openLink('https://rightmove.co.uk')">Rightmove Plus</button>
+        <button class="btn" onclick="openLink('https://rightmove.co.uk')">Best Price Guide</button>
 
-        <aside class="card">
-          <h2>Research / Data</h2>
-          <p class="sub">Reference tools and property data sources.</p>
-          <div class="side-grid">
-            <button class="tile" onclick="openExternal('#')">
-              <div class="tile-title">LandInsight</div>
-            </button>
-            <button class="tile" onclick="openExternal('#')">
-              <div class="tile-title">Spectre</div>
-            </button>
-            <button class="tile" onclick="openExternal('#')">
-              <div class="tile-title">Nationwide HPI</div>
-            </button>
-            <button class="tile" onclick="openExternal('#')">
-              <div class="tile-title">Zoopla</div>
-            </button>
-            <button class="tile" onclick="openExternal('#')">
-              <div class="tile-title">Rightmove</div>
-            </button>
-            <button class="tile" onclick="openExternal('#')">
-              <div class="tile-title">Land Registry Title Search</div>
-            </button>
-          </div>
-        </aside>
+        <button class="btn full" onclick="openLink('https://rightmove.co.uk')">Property Performance</button>
       </div>
     </div>
+
+    <!-- CLIENT APPS -->
+    <div class="card">
+      <h2>Client Apps</h2>
+
+      <button class="btn primary full" onclick="openLink('property-launcher.html')">
+        Launch Property Info App
+      </button>
+
+      <button class="btn secondary full" onclick="openLink('aml-launcher.html')">
+        Launch AML Upload App
+      </button>
+
+    </div>
+
   </div>
 
-  <script>
-    function openExternal(url){
-      if(url === '#'){
-        alert('Placeholder link. Send the live URL and I will swap it in.');
-        return;
-      }
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
+  <!-- RIGHT SIDE -->
+  <div class="card sidebar">
+    <h2>Research / Data</h2>
 
-    function openInternal(path){
-      window.open(path, '_blank', 'noopener,noreferrer');
-    }
-  </script>
+    <button class="btn" onclick="openLink('https://landinsight.io')">LandInsight</button>
+    <button class="btn" onclick="openLink('https://spectre.ai')">Spectre</button>
+    <button class="btn" onclick="openLink('https://nationwidehousepriceindex.co.uk')">Nationwide HPI</button>
+    <button class="btn" onclick="openLink('https://zoopla.co.uk')">Zoopla</button>
+    <button class="btn" onclick="openLink('https://rightmove.co.uk')">Rightmove</button>
+    <button class="btn" onclick="openLink('https://www.gov.uk/search-property-information-land-registry')">Land Registry</button>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function openLink(url){
+  window.open(url, '_blank');
+}
+</script>
+
 </body>
 </html>
