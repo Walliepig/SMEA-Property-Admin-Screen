@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Property Info Launcher</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{font-family:Arial;padding:20px;max-width:600px;margin:auto}
+input{width:100%;padding:10px;margin:6px 0}
+button{padding:12px;width:100%;margin-top:10px}
+</style>
+</head>
+
+<body>
+
+<h2>Property Info Link Generator</h2>
+
+<p><strong>Hint:</strong> Copy from Rezi to save time</p>
+
+<input id="a1" placeholder="Address line 1">
+<input id="a2" placeholder="Address line 2">
+<input id="town" placeholder="Town">
+<input id="pc" placeholder="Postcode">
+
+<button onclick="generate()">Generate Link</button>
+<button onclick="copy()">Copy Link</button>
+<button onclick="openForm()">Open Form</button>
+
+<script>
+let link="";
+
+function generate(){
+  link = `https://property-information-form.vercel.app/?address1=${encodeURIComponent(a1.value)}&address2=${encodeURIComponent(a2.value)}&town=${encodeURIComponent(town.value)}&postcode=${encodeURIComponent(pc.value)}`;
+  alert("Link generated");
+}
+
+function copy(){
+  navigator.clipboard.writeText(link);
+  alert("Copied");
+}
+
+function openForm(){
+  window.open(link, "_blank");
+}
+</script>
+
+</body>
+</html>
