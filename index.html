@@ -1,418 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Property Admin Screen | Stephanie Macnab Estate Agent</title>
-  <style>
-    :root{
-      --brand-yellow:#E1BE4A;
-      --brand-gold-dark:#C9A227;
-      --brand-slate:#2F3542;
-      --brand-slate-dark:#2F3542;
-      --brand-white:#ffffff;
-      --brand-off:#f4f5f6;
-      --brand-line:#d7dbde;
-      --shadow:0 18px 36px rgba(0,0,0,.11);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family:Lato, Arial, Helvetica, sans-serif;
-      background:#eef1f3;
-      color:#1d2328;
-    }
-    a{color:inherit;text-decoration:none}
-    .page{
-      min-height:100vh;
-      padding:18px 12px 42px;
-      background:linear-gradient(180deg, #2F3542 0 335px, #eef1f3 335px 100%);
-    }
-    .shell{max-width:980px;margin:0 auto}
-    .brand{
-      text-align:center;
-      color:#fff;
-      padding:8px 12px 20px;
-    }
-    .brand .logo{
-      width:min(150px,42vw);
-      display:block;
-      margin:8px auto 16px;
-      height:auto;
-    }
-    .brand h1{
-      margin:0 0 8px;
-      font-family:"Big Caslon","Big Caslon Medium",Georgia,"Times New Roman",serif;
-      font-size:clamp(2rem, 2vw + 1.2rem, 2.8rem);
-      font-weight:500;
-      line-height:1.02;
-      letter-spacing:.01em;
-      color:#fff;
-      text-shadow:0 2px 6px rgba(0,0,0,.22);
-      text-align:center;
-    }
-    .brand p{
-      margin:0 auto;
-      max-width:720px;
-      color:rgba(255,255,255,.92);
-      line-height:1.42;
-      font-size:1rem;
-      text-shadow:0 1px 4px rgba(0,0,0,.18);
-      text-align:center;
-      padding:0 16px;
-    }
-    .card{
-      background:#fff;
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.04);
-      margin-bottom:18px;
-    }
-    .topbar{
-      background:linear-gradient(180deg, #E6C65A 0%, #D4AF37 100%);
-      padding:14px 18px;
-      color:#2b2f38;
-      font-weight:700;
-      font-size:.98rem;
-      border-bottom:1px solid rgba(0,0,0,.05);
-    }
-    .content{padding:24px 20px 22px}
-    .eyebrow{
-      display:inline-block;
-      margin-bottom:14px;
-      padding:7px 10px;
-      border-radius:999px;
-      background:#f0f2f4;
-      color:var(--brand-slate);
-      font-size:.82rem;
-      font-weight:700;
-      letter-spacing:.01em;
-    }
-    h2{
-      margin:0 0 12px;
-      font-family:"Big Caslon","Big Caslon Medium",Georgia,"Times New Roman",serif;
-      font-size:clamp(1.7rem, 1vw + 1.15rem, 2.15rem);
-      line-height:1.12;
-      font-weight:500;
-      color:#1a2025;
-    }
-    h3{
-      margin:0 0 10px;
-      color:#1d2328;
-      font-size:1.03rem;
-    }
-    p{
-      margin:0 0 12px;
-      color:#313840;
-      line-height:1.58;
-    }
-    .tiny{
-      font-size:.82rem;
-      color:#67727c;
-      line-height:1.5;
-    }
-    .quick-grid{
-      display:grid;
-      gap:12px;
-      margin-top:8px;
-    }
-    .quick-link{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      background:#fff;
-      border:1px solid var(--brand-line);
-      border-radius:18px;
-      padding:16px 16px;
-      transition:transform .06s ease, box-shadow .15s ease, border-color .2s ease, background .2s ease;
-      box-shadow:0 6px 16px rgba(0,0,0,.04);
-    }
-    .quick-link:hover{
-      box-shadow:0 10px 22px rgba(0,0,0,.07);
-      background:#fbfbfc;
-    }
-    .quick-link .left{
-      display:flex;
-      flex-direction:column;
-      gap:3px;
-    }
-    .quick-link .title{
-      font-weight:700;
-      color:#1f252b;
-      font-size:1rem;
-    }
-    .quick-link .sub{
-      font-size:.86rem;
-      color:#67727c;
-    }
-    .quick-link .arrow{
-      font-size:1.1rem;
-      color:var(--brand-slate);
-      font-weight:700;
-      white-space:nowrap;
-    }
-    .field-grid{
-      display:grid;
-      gap:12px;
-    }
-    .field{
-      display:grid;
-      gap:7px;
-    }
-    label{
-      font-size:.93rem;
-      font-weight:700;
-      color:#273038;
-    }
-    input{
-      width:100%;
-      border:1px solid #cfd4d8;
-      background:#fff;
-      border-radius:14px;
-      padding:14px 14px;
-      font:inherit;
-      font-size:1rem;
-      color:#1e242a;
-      outline:none;
-    }
-    input:focus{
-      border-color:var(--brand-slate);
-      box-shadow:0 0 0 3px rgba(83,86,90,.12);
-    }
-    .btn-row{
-      display:grid;
-      gap:10px;
-      margin-top:14px;
-    }
-    .btn{
-      appearance:none;
-      border:1px solid var(--brand-line);
-      border-radius:16px;
-      background:#fff;
-      color:#1f252b;
-      font:inherit;
-      font-size:1rem;
-      line-height:1.35;
-      padding:15px 14px;
-      width:100%;
-      cursor:pointer;
-      text-align:center;
-      transition:transform .06s ease, box-shadow .15s ease, border-color .2s ease, background .2s ease;
-    }
-    .btn:hover{box-shadow:0 8px 18px rgba(0,0,0,.06)}
-    .btn:active{transform:translateY(1px)}
-    .btn.primary{
-      background:linear-gradient(180deg, #E6C65A 0%, #D4AF37 100%);
-      border-color:#D4AF37;
-      color:#2b2f38;
-      font-weight:700;
-    }
-    .btn.secondary{
-      background:var(--brand-slate);
-      border-color:var(--brand-slate);
-      color:#fff;
-      font-weight:700;
-    }
-    .btn.ghost{
-      background:#fff;
-      color:var(--brand-slate);
-    }
-    .output-box{
-      margin-top:14px;
-      padding:14px;
-      border-radius:14px;
-      background:#f7f8f9;
-      border:1px solid #e3e6e9;
-      word-break:break-all;
-      color:#273038;
-      min-height:56px;
-    }
-    .placeholder{
-      border-left:4px solid var(--brand-yellow);
-      background:#fff8db;
-      border-radius:14px;
-      padding:13px 13px 13px 15px;
-      margin-top:8px;
-    }
-    @media (min-width:720px){
-      .quick-grid{
-        grid-template-columns:1fr 1fr;
-      }
-      .field-grid{
-        grid-template-columns:1fr 1fr;
-      }
-      .field-grid .full{
-        grid-column:1 / -1;
-      }
-      .btn-row{
-        grid-template-columns:1fr 1fr;
-      }
-      .btn-row .full{
-        grid-column:1 / -1;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Admin Screen</title>
+
+<style>
+:root{
+  --gold:#D4AF37;
+  --gold-light:#E6C65A;
+  --dark:#2F3542;
+  --light:#f4f5f6;
+  --card:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family:Lato, Arial, sans-serif;
+  background:linear-gradient(180deg, #2F3542 0 260px, #eef1f3 260px 100%);
+}
+
+.header{
+  text-align:center;
+  color:#fff;
+  padding:30px 10px 20px;
+}
+
+.header h1{
+  margin:0;
+  font-size:32px;
+  font-family:Georgia, serif;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h2{
+  margin-top:0;
+  font-size:18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.tile{
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  background:#fafafa;
+  cursor:pointer;
+  text-align:center;
+  font-weight:600;
+}
+
+.tile:hover{
+  background:#f0f0f0;
+}
+
+.button{
+  display:block;
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:none;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.primary{
+  background:linear-gradient(180deg, #E6C65A, #D4AF37);
+}
+
+.secondary{
+  background:#2F3542;
+  color:#fff;
+}
+
+.sidebar .tile{
+  text-align:left;
+}
+
+@media(max-width:900px){
+  .container{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <div class="shell">
-      <div class="brand">
-        <img src="SM Main Logo.png" alt="Stephanie Macnab Estate Agent" class="logo" />
-        <h1>Property Admin Screen</h1>
-        <p>A single internal launch point for day-to-day property administration, quick access to key systems and generation of address-prefilled client form links.</p>
-      </div>
 
-      <div class="card">
-        <div class="topbar">Quick links</div>
-        <div class="content">
-          <div class="eyebrow">Office systems</div>
-          <h2>Open a linked system</h2>
-          <p>Select a system below. Each link opens in a new tab so this screen stays available in the background.</p>
+<div class="header">
+  <h1>Property Admin Screen</h1>
+</div>
 
-          <div class="quick-grid">
-            <a class="quick-link" href="https://id.dezrez.com/account/signin" target="_blank" rel="noopener noreferrer">
-              <div class="left">
-                <div class="title">Rezi</div>
-                <div class="sub">Open DezRez sign in</div>
-              </div>
-              <div class="arrow">Open ↗</div>
-            </a>
+<div class="container">
 
-            <a class="quick-link" href="https://agents.countrywidesigns.com/@bms/login" target="_blank" rel="noopener noreferrer">
-              <div class="left">
-                <div class="title">Countrywide Signs</div>
-                <div class="sub">Open board contractor portal</div>
-              </div>
-              <div class="arrow">Open ↗</div>
-            </a>
+  <!-- LEFT COLUMN -->
+  <div>
 
-            <a class="quick-link" href="https://admin.vouch.co.uk/" target="_blank" rel="noopener noreferrer">
-              <div class="left">
-                <div class="title">Vouch</div>
-                <div class="sub">Open Vouch login</div>
-              </div>
-              <div class="arrow">Open ↗</div>
-            </a>
+    <div class="card">
+      <h2>Quick Links</h2>
+      <div class="grid">
 
-            <a class="quick-link" href="https://secure.veriphy.co.uk/Portal/Account/Login" target="_blank" rel="noopener noreferrer">
-              <div class="left">
-                <div class="title">VERIPHY</div>
-                <div class="sub">Open VERIPHY login</div>
-              </div>
-              <div class="arrow">Open ↗</div>
-            </a>
-          </div>
-        </div>
-      </div>
+        <div class="tile" onclick="openLink('https://example.com/rezi')">Rezi</div>
+        <div class="tile" onclick="openLink('https://example.com/vouch')">Vouch</div>
+        <div class="tile" onclick="openLink('https://example.com/countrywide')">Countrywide</div>
+        <div class="tile" onclick="openLink('https://example.com/veriphy')">VERIPHY</div>
+        <div class="tile" onclick="openLink('https://example.com/rightmoveplus')">Rightmove Plus</div>
+        <div class="tile" onclick="openLink('https://example.com/bestprice')">Best Price Guide</div>
+        <div class="tile" onclick="openLink('https://example.com/performance')">Property Performance</div>
 
-      <div class="card">
-        <div class="topbar">Client link generator</div>
-        <div class="content">
-          <div class="eyebrow">Property Information Form</div>
-          <h2>Generate an address-prefilled client link</h2>
-          <p>Enter the property address below and generate a client link. The seller will see the address pre-filled and can confirm or amend it in the form.</p>
-
-          <div class="field-grid">
-            <div class="field full">
-              <label for="address1">Address line 1</label>
-              <input id="address1" type="text" placeholder="House number and street" />
-            </div>
-
-            <div class="field full">
-              <label for="address2">Address line 2</label>
-              <input id="address2" type="text" placeholder="Area or locality, if needed" />
-            </div>
-
-            <div class="field">
-              <label for="town">Town / city</label>
-              <input id="town" type="text" placeholder="Town or city" />
-            </div>
-
-            <div class="field">
-              <label for="postcode">Postcode</label>
-              <input id="postcode" type="text" placeholder="Postcode" />
-            </div>
-          </div>
-
-          <div class="btn-row">
-            <button class="btn primary full" onclick="generateLink()">Generate Property Information Form link</button>
-            <button class="btn ghost" onclick="copyLink()">Copy link</button>
-            <button class="btn ghost" onclick="openLink()">Open form</button>
-            <button class="btn secondary full" onclick="copyMessage()">Copy client message</button>
-          </div>
-
-          <div class="output-box" id="outputBox">No link generated yet.</div>
-
-          <p class="tiny" style="margin-top:10px;">
-            Base form URL: https://property-information-form.vercel.app/
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="topbar">AML</div>
-        <div class="content">
-          <div class="eyebrow">Compliance</div>
-          <h2>AML upload app</h2>
-          <div class="placeholder">
-            <p><strong>Coming soon.</strong></p>
-            <p class="tiny">This section can later be updated to generate or open the separate AML upload link.</p>
-          </div>
-        </div>
       </div>
     </div>
+
+    <div class="card">
+      <h2>Client Apps</h2>
+
+      <button class="button primary" onclick="openLink('property-launcher.html')">
+        Launch Property Info App
+      </button>
+
+      <button class="button secondary" onclick="openLink('aml-launcher.html')">
+        Launch AML Upload App
+      </button>
+
+    </div>
+
   </div>
 
-  <script>
-    const PROPERTY_FORM_BASE = "https://property-information-form.vercel.app/";
-    let generatedLink = "";
+  <!-- SIDEBAR -->
+  <div class="card sidebar">
+    <h2>Research / Data</h2>
 
-    function encodeParam(value){
-      return encodeURIComponent((value || "").trim());
-    }
+    <div class="tile" onclick="openLink('https://example.com/landinsight')">LandInsight</div>
+    <div class="tile" onclick="openLink('https://example.com/spectre')">Spectre</div>
+    <div class="tile" onclick="openLink('https://example.com/nationwide')">Nationwide HPI</div>
+    <div class="tile" onclick="openLink('https://example.com/zoopla')">Zoopla</div>
+    <div class="tile" onclick="openLink('https://example.com/rightmove')">Rightmove</div>
+    <div class="tile" onclick="openLink('https://example.com/landregistry')">Land Registry</div>
 
-    function generateLink(){
-      const address1 = document.getElementById("address1").value;
-      const address2 = document.getElementById("address2").value;
-      const town = document.getElementById("town").value;
-      const postcode = document.getElementById("postcode").value;
+  </div>
 
-      generatedLink =
-        `${PROPERTY_FORM_BASE}?address1=${encodeParam(address1)}&address2=${encodeParam(address2)}&town=${encodeParam(town)}&postcode=${encodeParam(postcode)}`;
+</div>
 
-      document.getElementById("outputBox").textContent = generatedLink;
-    }
+<script>
+function openLink(url){
+  window.open(url, '_blank');
+}
+</script>
 
-    function copyLink(){
-      if(!generatedLink){
-        alert("Generate the link first.");
-        return;
-      }
-      navigator.clipboard.writeText(generatedLink);
-      alert("Link copied.");
-    }
-
-    function openLink(){
-      if(!generatedLink){
-        alert("Generate the link first.");
-        return;
-      }
-      window.open(generatedLink, "_blank", "noopener,noreferrer");
-    }
-
-    function copyMessage(){
-      if(!generatedLink){
-        alert("Generate the link first.");
-        return;
-      }
-
-      const message = `Please complete our property information form using the link below. The property address has been pre-filled for convenience, but please check and amend it if needed.\n\n${generatedLink}`;
-
-      navigator.clipboard.writeText(message);
-      alert("Client message copied.");
-    }
-  </script>
 </body>
 </html>
