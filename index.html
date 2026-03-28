@@ -15,93 +15,143 @@
       --gold:#E1BE4A;
       --gold-dark:#C9A227;
       --brand:#2f3542;
+      --brand-soft:#3f4757;
       --shadow:0 14px 34px rgba(15,23,42,0.07);
       --shadow-soft:0 8px 22px rgba(15,23,42,0.05);
-      --radius-xl:26px;
-      --radius-lg:22px;
-      --radius-md:18px;
-      --logo-box:74px;
-      --max:1240px;
+      --shadow-hover:0 16px 34px rgba(15,23,42,0.09);
+      --radius-xl:24px;
+      --radius-lg:20px;
+      --radius-md:16px;
+      --logo-box:68px;
+      --social-box:38px;
+      --max:1220px;
     }
 
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
+
     body{
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
       background:var(--bg);
       color:var(--text);
       min-height:100vh;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
     .page{
       max-width:var(--max);
       margin:0 auto;
-      padding:30px 18px 56px;
+      padding:24px 18px 48px;
     }
 
     .hero{
       text-align:center;
-      padding:4px 12px 26px;
+      padding:2px 12px 22px;
       color:var(--text);
       border-bottom:1px solid var(--line);
-      margin-bottom:30px;
+      margin-bottom:24px;
     }
 
     .hero-logo{
       width:138px;
       height:auto;
       display:block;
-      margin:0 auto 12px;
+      margin:0 auto 10px;
     }
 
     .hero h1{
-      margin:0 0 8px;
-      font-size:clamp(2.1rem, 3vw, 3.25rem);
+      margin:0 0 6px;
+      font-size:clamp(2.15rem, 3vw, 3.3rem);
       line-height:1.02;
-      letter-spacing:-0.045em;
+      letter-spacing:-0.05em;
       font-weight:700;
       color:var(--text);
     }
 
     .hero p{
       margin:0 auto;
-      max-width:780px;
+      max-width:760px;
       color:var(--muted);
-      font-size:1.02rem;
-      line-height:1.5;
+      font-size:1rem;
+      line-height:1.45;
       font-weight:400;
     }
 
     .hero-link{
-      display:inline-block;
-      margin-top:14px;
-      padding:11px 18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:12px;
+      padding:10px 16px;
       border-radius:999px;
       text-decoration:none;
       color:#171717;
       background:linear-gradient(180deg, #ecd37b 0%, #e1be4a 60%, #d6ae2d 100%);
       border:1px solid rgba(0,0,0,0.05);
-      font-size:.92rem;
+      font-size:.9rem;
       font-weight:700;
-      transition:transform .18s ease, box-shadow .18s ease;
-      box-shadow:0 8px 18px rgba(201,162,39,.20);
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      box-shadow:0 8px 18px rgba(201,162,39,.18);
     }
 
     .hero-link:hover{
       transform:translateY(-1px);
-      box-shadow:0 10px 22px rgba(201,162,39,.24);
+      box-shadow:0 10px 22px rgba(201,162,39,.22);
     }
+
+    .social-row{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+
+    .social-link{
+      position:relative;
+      width:var(--social-box);
+      height:var(--social-box);
+      border-radius:12px;
+      background:var(--bg-soft);
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .social-link:hover{
+      transform:translateY(-2px);
+      background:#fffdfa;
+      border-color:rgba(201,162,39,.42);
+      box-shadow:var(--shadow-hover);
+    }
+
+    .social-link svg{
+      width:18px;
+      height:18px;
+      display:block;
+    }
+
+    .social-link.content360{ color:#2f3542; }
+    .social-link.facebook{ color:#1877f2; }
+    .social-link.instagram{ color:#c13584; }
+    .social-link.tiktok{ color:#111111; }
 
     .layout{
       display:grid;
-      grid-template-columns:1.95fr 1fr;
-      gap:24px;
+      grid-template-columns:1.92fr 1fr;
+      gap:20px;
       align-items:start;
     }
 
     .stack{
       display:grid;
-      gap:26px;
+      gap:20px;
     }
 
     .panel{
@@ -113,51 +163,55 @@
     }
 
     .panel-inner{
-      padding:24px;
+      padding:20px;
     }
 
     .panel h2{
       margin:0;
-      font-size:1.72rem;
-      line-height:1.05;
-      letter-spacing:-0.035em;
+      font-size:1.68rem;
+      line-height:1.04;
+      letter-spacing:-0.04em;
       font-weight:700;
       color:var(--text);
     }
 
     .panel-copy{
-      margin:10px 0 0;
+      margin:8px 0 0;
       color:var(--muted);
-      font-size:.97rem;
-      line-height:1.5;
+      font-size:.95rem;
+      line-height:1.45;
     }
 
     .section-head{
-      margin-bottom:18px;
+      margin-bottom:14px;
     }
 
     .quick-grid{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:14px;
+      gap:12px;
     }
 
     .side-grid{
       display:grid;
-      gap:12px;
+      gap:10px;
     }
 
     .app-card{
       width:100%;
       border:1px solid var(--line);
       background:#fff;
-      border-radius:24px;
-      padding:16px;
+      border-radius:22px;
+      padding:14px;
       display:flex;
       align-items:center;
-      gap:16px;
+      gap:14px;
       cursor:pointer;
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease,
+        background .18s ease;
       text-align:left;
       box-shadow:var(--shadow-soft);
     }
@@ -165,7 +219,7 @@
     .app-card:hover{
       transform:translateY(-2px);
       border-color:rgba(201,162,39,.45);
-      box-shadow:0 14px 28px rgba(15,23,42,.08);
+      box-shadow:var(--shadow-hover);
       background:#fffdfa;
     }
 
@@ -173,14 +227,14 @@
       width:var(--logo-box);
       min-width:var(--logo-box);
       height:var(--logo-box);
-      border-radius:18px;
+      border-radius:16px;
       background:var(--bg-soft);
       border:1px solid rgba(17,17,17,.05);
       display:flex;
       align-items:center;
       justify-content:center;
       overflow:hidden;
-      padding:10px;
+      padding:9px;
     }
 
     .app-logo{
@@ -196,70 +250,77 @@
     }
 
     .app-title{
-      font-size:1.02rem;
-      line-height:1.15;
+      font-size:1rem;
+      line-height:1.12;
       font-weight:700;
-      letter-spacing:-0.015em;
-      margin:0 0 5px;
+      letter-spacing:-0.02em;
+      margin:0 0 4px;
       color:var(--text);
     }
 
     .app-note{
       font-size:.9rem;
-      line-height:1.42;
+      line-height:1.38;
       color:var(--muted);
       margin:0;
     }
 
     .client-app-list{
       display:grid;
-      gap:14px;
-      margin-top:6px;
+      gap:12px;
+      margin-top:4px;
     }
 
     .client-app-row{
       display:grid;
       grid-template-columns:auto 1fr;
-      gap:18px;
+      gap:16px;
       align-items:center;
       border:1px solid var(--line);
-      border-radius:24px;
-      padding:18px;
+      border-radius:22px;
+      padding:16px;
       background:#fff;
       box-shadow:var(--shadow-soft);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .client-app-row:hover{
+      transform:translateY(-1px);
+      border-color:rgba(201,162,39,.32);
+      box-shadow:var(--shadow-hover);
     }
 
     .client-btn{
       appearance:none;
       border:none;
-      border-radius:18px;
-      padding:14px 18px;
-      min-width:250px;
+      border-radius:16px;
+      padding:12px 15px;
+      min-width:220px;
       cursor:pointer;
       text-align:left;
-      transition:transform .18s ease, box-shadow .18s ease;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
       box-shadow:var(--shadow-soft);
     }
 
     .client-btn:hover{
       transform:translateY(-1px);
-      box-shadow:0 14px 28px rgba(15,23,42,.08);
+      box-shadow:var(--shadow-hover);
     }
 
     .client-btn.primary{
       background:linear-gradient(180deg, #ecd37b 0%, #e1be4a 58%, #d6ae2d 100%);
       color:#1b1f27;
-      border:1px solid rgba(201,162,39,.22);
+      border:1px solid rgba(201,162,39,.20);
     }
 
     .client-btn.secondary{
-      background:var(--brand);
+      background:linear-gradient(180deg, #495470 0%, #2f3542 100%);
       color:#fff;
       border:1px solid rgba(47,53,66,.18);
     }
 
     .client-btn-eyebrow{
-      font-size:.76rem;
+      font-size:.74rem;
       opacity:.84;
       font-weight:700;
       letter-spacing:.02em;
@@ -268,16 +329,16 @@
     }
 
     .client-btn-title{
-      font-size:1.02rem;
+      font-size:1rem;
       font-weight:700;
-      line-height:1.15;
+      line-height:1.14;
       letter-spacing:-0.02em;
     }
 
     .client-copy h3{
-      margin:0 0 6px;
-      font-size:1.03rem;
-      line-height:1.2;
+      margin:0 0 5px;
+      font-size:1rem;
+      line-height:1.18;
       font-weight:700;
       color:var(--text);
     }
@@ -285,23 +346,78 @@
     .client-copy p{
       margin:0;
       color:var(--muted);
-      font-size:.94rem;
-      line-height:1.5;
+      font-size:.92rem;
+      line-height:1.45;
     }
 
     .footer-note{
-      margin-top:16px;
-      padding-top:16px;
+      margin-top:14px;
+      padding-top:14px;
       border-top:1px solid var(--line);
       color:var(--muted);
-      font-size:.88rem;
-      line-height:1.45;
+      font-size:.86rem;
+      line-height:1.4;
+    }
+
+    .shortcut-note{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:.82rem;
+      line-height:1.4;
+    }
+
+    [data-tooltip]{
+      position:relative;
+    }
+
+    [data-tooltip]::after{
+      content:attr(data-tooltip);
+      position:absolute;
+      left:50%;
+      bottom:calc(100% + 10px);
+      transform:translateX(-50%) translateY(4px);
+      background:#111111;
+      color:#fff;
+      font-size:.76rem;
+      line-height:1.2;
+      padding:7px 9px;
+      border-radius:10px;
+      white-space:nowrap;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .16s ease, transform .16s ease;
+      box-shadow:0 10px 20px rgba(0,0,0,.16);
+      z-index:50;
+    }
+
+    [data-tooltip]:hover::after,
+    [data-tooltip]:focus-visible::after{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+
+    .shortcut-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:20px;
+      height:20px;
+      border-radius:7px;
+      background:#f0f1f3;
+      border:1px solid var(--line);
+      color:#444;
+      font-size:.72rem;
+      font-weight:700;
+      margin-left:6px;
+      vertical-align:middle;
+      padding:0 5px;
     }
 
     @media (max-width: 980px){
       .layout{
         grid-template-columns:1fr;
       }
+
       .quick-grid{
         grid-template-columns:1fr;
       }
@@ -313,22 +429,22 @@
       }
 
       .hero{
-        padding-top:4px;
-        padding-bottom:20px;
-        margin-bottom:20px;
+        padding-top:2px;
+        padding-bottom:18px;
+        margin-bottom:18px;
       }
 
       .hero-logo{
-        width:108px;
+        width:110px;
       }
 
       .panel-inner{
-        padding:18px;
+        padding:16px;
       }
 
       .client-app-row{
         grid-template-columns:1fr;
-        gap:14px;
+        gap:12px;
       }
 
       .client-btn{
@@ -337,7 +453,8 @@
       }
 
       :root{
-        --logo-box:60px;
+        --logo-box:58px;
+        --social-box:36px;
       }
     }
   </style>
@@ -349,6 +466,35 @@
       <h1>Formby's #1 Estate Agent - Launch Pad</h1>
       <p>Internal dashboard for links, launch screens and property research tools.</p>
       <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">Visit Main Website</a>
+
+      <div class="social-row">
+        <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer" data-tooltip="Content360">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3.25 20 7.85v8.3L12 20.75 4 16.15v-8.3L12 3.25Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12 3.25v17.5M4.6 8.2 19.4 15.8M19.4 8.2 4.6 15.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+
+        <a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank" rel="noopener noreferrer" data-tooltip="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6H17V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10H8v3h2.2v8h3.3Z"/>
+          </svg>
+        </a>
+
+        <a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank" rel="noopener noreferrer" data-tooltip="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
+          </svg>
+        </a>
+
+        <a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank" rel="noopener noreferrer" data-tooltip="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M15.8 3c.3 1.7 1.3 3.1 2.8 3.8.7.3 1.4.5 2.1.5v3a8 8 0 0 1-4.9-1.6v6.7a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.4 2.4 0 1 0 1.5 2.2V3h3.2Z"/>
+          </svg>
+        </a>
+      </div>
     </header>
 
     <main class="layout">
@@ -358,56 +504,53 @@
             <div class="section-head">
               <h2>Quick Links</h2>
               <p class="panel-copy">Core systems and operational shortcuts. Each one opens in a new tab.</p>
+              <div class="shortcut-note">
+                Shortcuts:
+                <span class="shortcut-badge">R</span>
+                <span class="shortcut-badge">V</span>
+                <span class="shortcut-badge">C</span>
+                <span class="shortcut-badge">Y</span>
+              </div>
             </div>
 
             <div class="quick-grid">
-              <button class="app-card" onclick="openExternal('https://rezi.dezrez.com/')">
+              <button class="app-card" onclick="openExternal('https://rezi.dezrez.com/')" data-tooltip="Open Rezi">
                 <div class="app-logo-wrap">
                   <img src="rezi-logo.png" alt="Rezi" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">Rezi</div>
+                  <div class="app-title">Rezi <span class="shortcut-badge">R</span></div>
                   <p class="app-note">CRM access and live property records.</p>
                 </div>
               </button>
 
-              <button class="app-card" onclick="openExternal('https://dashboard.vouch.co.uk/wp-login.php')">
+              <button class="app-card" onclick="openExternal('https://dashboard.vouch.co.uk/wp-login.php')" data-tooltip="Open Vouch">
                 <div class="app-logo-wrap">
                   <img src="vouch.png" alt="Vouch" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">Vouch</div>
+                  <div class="app-title">Vouch <span class="shortcut-badge">V</span></div>
                   <p class="app-note">Compliance and onboarding dashboard.</p>
                 </div>
               </button>
 
-              <button class="app-card" onclick="openExternal('https://agents.countrywidesigns.com/@bms/login/')">
+              <button class="app-card" onclick="openExternal('https://agents.countrywidesigns.com/@bms/login/')" data-tooltip="Open Countrywide Signs">
                 <div class="app-logo-wrap">
                   <img src="countrywide.png" alt="Countrywide Signs" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">Countrywide</div>
+                  <div class="app-title">Countrywide <span class="shortcut-badge">C</span></div>
                   <p class="app-note">Board contractor login and orders.</p>
                 </div>
               </button>
 
-              <button class="app-card" onclick="openExternal('https://secure.veriphy.co.uk/Portal/Account/Login')">
+              <button class="app-card" onclick="openExternal('https://secure.veriphy.co.uk/Portal/Account/Login')" data-tooltip="Open VERIPHY">
                 <div class="app-logo-wrap">
                   <img src="veriphy.png" alt="VERIPHY" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">VERIPHY</div>
+                  <div class="app-title">VERIPHY <span class="shortcut-badge">Y</span></div>
                   <p class="app-note">Verification and screening portal.</p>
-                </div>
-              </button>
-
-              <button class="app-card" onclick="openExternal('https://rmplus.rightmove.co.uk/login')">
-                <div class="app-logo-wrap">
-                  <img src="RMplus.png" alt="RM Plus" class="app-logo">
-                </div>
-                <div class="app-meta">
-                  <div class="app-title">RM Plus</div>
-                  <p class="app-note">Rightmove Plus dashboard login.</p>
                 </div>
               </button>
             </div>
@@ -419,11 +562,16 @@
             <div class="section-head">
               <h2>Client Apps</h2>
               <p class="panel-copy">Launch internal setup screens before sending the client-facing link.</p>
+              <div class="shortcut-note">
+                Shortcuts:
+                <span class="shortcut-badge">P</span>
+                <span class="shortcut-badge">A</span>
+              </div>
             </div>
 
             <div class="client-app-list">
               <div class="client-app-row">
-                <button class="client-btn primary" onclick="openInternal('/property-launcher.html')">
+                <button class="client-btn primary" onclick="openInternal('/property-launcher.html')" data-tooltip="Launch Property Info">
                   <div class="client-btn-eyebrow">Property information</div>
                   <div class="client-btn-title">Launch Property Info App</div>
                 </button>
@@ -434,7 +582,7 @@
               </div>
 
               <div class="client-app-row">
-                <button class="client-btn secondary" onclick="openInternal('/aml-launcher.html')">
+                <button class="client-btn secondary" onclick="openInternal('/aml-launcher.html')" data-tooltip="Launch AML Upload">
                   <div class="client-btn-eyebrow">AML compliance</div>
                   <div class="client-btn-title">Launch AML Upload App</div>
                 </button>
@@ -457,65 +605,85 @@
           <div class="section-head">
             <h2>Research Bar</h2>
             <p class="panel-copy">Reference tools and property research shortcuts.</p>
+            <div class="shortcut-note">
+              Shortcuts:
+              <span class="shortcut-badge">M</span>
+              <span class="shortcut-badge">L</span>
+              <span class="shortcut-badge">S</span>
+              <span class="shortcut-badge">N</span>
+              <span class="shortcut-badge">Z</span>
+              <span class="shortcut-badge">T</span>
+              <span class="shortcut-badge">G</span>
+            </div>
           </div>
 
           <div class="side-grid">
-            <button class="app-card" onclick="openExternal('https://auth.land.tech/u/login')">
+            <button class="app-card" onclick="openExternal('https://rmplus.rightmove.co.uk/login')" data-tooltip="Open RM Plus">
+              <div class="app-logo-wrap">
+                <img src="RMplus.png" alt="RM Plus" class="app-logo">
+              </div>
+              <div class="app-meta">
+                <div class="app-title">RM Plus <span class="shortcut-badge">M</span></div>
+                <p class="app-note">Rightmove Plus dashboard login.</p>
+              </div>
+            </button>
+
+            <button class="app-card" onclick="openExternal('https://auth.land.tech/u/login')" data-tooltip="Open LandInsight">
               <div class="app-logo-wrap">
                 <img src="Landinsight.png" alt="LandInsight" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">LandInsight</div>
+                <div class="app-title">LandInsight <span class="shortcut-badge">L</span></div>
                 <p class="app-note">Planning and site intelligence.</p>
               </div>
             </button>
 
-            <button class="app-card" onclick="openExternal('https://account.spectre.uk.com/login')">
+            <button class="app-card" onclick="openExternal('https://account.spectre.uk.com/login')" data-tooltip="Open Spectre">
               <div class="app-logo-wrap">
                 <img src="spectre.png" alt="Spectre" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Spectre</div>
+                <div class="app-title">Spectre <span class="shortcut-badge">S</span></div>
                 <p class="app-note">Lead farming and prospecting.</p>
               </div>
             </button>
 
-            <button class="app-card" onclick="openExternal('https://www.nationwide.co.uk/house-price-index/')">
+            <button class="app-card" onclick="openExternal('https://www.nationwide.co.uk/house-price-index/')" data-tooltip="Open Nationwide HPI">
               <div class="app-logo-wrap">
                 <img src="nationwide.png" alt="Nationwide HPI" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Nationwide HPI</div>
+                <div class="app-title">Nationwide HPI <span class="shortcut-badge">N</span></div>
                 <p class="app-note">House price index reference.</p>
               </div>
             </button>
 
-            <button class="app-card" onclick="openExternal('https://www.zoopla.co.uk/house-prices/')">
+            <button class="app-card" onclick="openExternal('https://www.zoopla.co.uk/house-prices/')" data-tooltip="Open Zoopla">
               <div class="app-logo-wrap">
                 <img src="zoopla.png" alt="Zoopla" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Zoopla</div>
+                <div class="app-title">Zoopla <span class="shortcut-badge">Z</span></div>
                 <p class="app-note">Portal and comparables reference.</p>
               </div>
             </button>
 
-            <button class="app-card" onclick="openExternal('https://www.rightmove.co.uk/')">
+            <button class="app-card" onclick="openExternal('https://www.rightmove.co.uk/')" data-tooltip="Open Rightmove">
               <div class="app-logo-wrap">
                 <img src="rmove.png" alt="Rightmove" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Rightmove</div>
+                <div class="app-title">Rightmove <span class="shortcut-badge">T</span></div>
                 <p class="app-note">Portal homepage and listing reference.</p>
               </div>
             </button>
 
-            <button class="app-card" onclick="openExternal('https://search-property-information.service.gov.uk')">
+            <button class="app-card" onclick="openExternal('https://search-property-information.service.gov.uk')" data-tooltip="Open Land Registry">
               <div class="app-logo-wrap">
                 <img src="landregistry.png" alt="Land Registry" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Land Registry</div>
+                <div class="app-title">Land Registry <span class="shortcut-badge">G</span></div>
                 <p class="app-note">Title search and property information.</p>
               </div>
             </button>
@@ -533,6 +701,41 @@
     function openInternal(path){
       window.open(path, '_blank', 'noopener,noreferrer');
     }
+
+    document.addEventListener('keydown', function(e){
+      const tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.isContentEditable) return;
+
+      const key = e.key.toLowerCase();
+
+      const shortcuts = {
+        r: 'https://rezi.dezrez.com/',
+        v: 'https://dashboard.vouch.co.uk/wp-login.php',
+        c: 'https://agents.countrywidesigns.com/@bms/login/',
+        y: 'https://secure.veriphy.co.uk/Portal/Account/Login',
+        m: 'https://rmplus.rightmove.co.uk/login',
+        l: 'https://auth.land.tech/u/login',
+        s: 'https://account.spectre.uk.com/login',
+        n: 'https://www.nationwide.co.uk/house-price-index/',
+        z: 'https://www.zoopla.co.uk/house-prices/',
+        t: 'https://www.rightmove.co.uk/',
+        g: 'https://search-property-information.service.gov.uk'
+      };
+
+      if (key === 'p') {
+        openInternal('/property-launcher.html');
+        return;
+      }
+
+      if (key === 'a') {
+        openInternal('/aml-launcher.html');
+        return;
+      }
+
+      if (shortcuts[key]) {
+        openExternal(shortcuts[key]);
+      }
+    });
   </script>
 </body>
 </html>
