@@ -15,7 +15,6 @@
       --gold:#E1BE4A;
       --gold-dark:#C9A227;
       --brand:#2f3542;
-      --brand-soft:#3f4757;
       --shadow:0 14px 34px rgba(15,23,42,0.07);
       --shadow-soft:0 8px 22px rgba(15,23,42,0.05);
       --shadow-hover:0 16px 34px rgba(15,23,42,0.09);
@@ -359,13 +358,6 @@
       line-height:1.4;
     }
 
-    .shortcut-note{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:.82rem;
-      line-height:1.4;
-    }
-
     [data-tooltip]{
       position:relative;
     }
@@ -394,23 +386,6 @@
     [data-tooltip]:focus-visible::after{
       opacity:1;
       transform:translateX(-50%) translateY(0);
-    }
-
-    .shortcut-badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:20px;
-      height:20px;
-      border-radius:7px;
-      background:#f0f1f3;
-      border:1px solid var(--line);
-      color:#444;
-      font-size:.72rem;
-      font-weight:700;
-      margin-left:6px;
-      vertical-align:middle;
-      padding:0 5px;
     }
 
     @media (max-width: 980px){
@@ -504,13 +479,6 @@
             <div class="section-head">
               <h2>Quick Links</h2>
               <p class="panel-copy">Core systems and operational shortcuts. Each one opens in a new tab.</p>
-              <div class="shortcut-note">
-                Shortcuts: Command + 
-                <span class="shortcut-badge">R</span>
-                <span class="shortcut-badge">V</span>
-                <span class="shortcut-badge">C</span>
-                <span class="shortcut-badge">Y</span>
-              </div>
             </div>
 
             <div class="quick-grid">
@@ -519,7 +487,7 @@
                   <img src="rezi-logo.png" alt="Rezi" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">Rezi <span class="shortcut-badge">R</span></div>
+                  <div class="app-title">Rezi</div>
                   <p class="app-note">CRM access and live property records.</p>
                 </div>
               </button>
@@ -529,7 +497,7 @@
                   <img src="vouch.png" alt="Vouch" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">Vouch <span class="shortcut-badge">V</span></div>
+                  <div class="app-title">Vouch</div>
                   <p class="app-note">Compliance and onboarding dashboard.</p>
                 </div>
               </button>
@@ -539,7 +507,7 @@
                   <img src="countrywide.png" alt="Countrywide Signs" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">Countrywide <span class="shortcut-badge">C</span></div>
+                  <div class="app-title">Countrywide</div>
                   <p class="app-note">Board contractor login and orders.</p>
                 </div>
               </button>
@@ -549,7 +517,7 @@
                   <img src="veriphy.png" alt="VERIPHY" class="app-logo">
                 </div>
                 <div class="app-meta">
-                  <div class="app-title">VERIPHY <span class="shortcut-badge">Y</span></div>
+                  <div class="app-title">VERIPHY</div>
                   <p class="app-note">Verification and screening portal.</p>
                 </div>
               </button>
@@ -562,11 +530,6 @@
             <div class="section-head">
               <h2>Client Apps</h2>
               <p class="panel-copy">Launch internal setup screens before sending the client-facing link.</p>
-              <div class="shortcut-note">
-                Shortcuts: Command + 
-                <span class="shortcut-badge">P</span>
-                <span class="shortcut-badge">A</span>
-              </div>
             </div>
 
             <div class="client-app-list">
@@ -594,7 +557,7 @@
             </div>
 
             <div class="footer-note">
-              Hint: keep this launch screen open - each page will open in a new tab.
+              Hint: keep this page open as the control screen and launch each app in a new tab.
             </div>
           </div>
         </section>
@@ -605,16 +568,6 @@
           <div class="section-head">
             <h2>Research Bar</h2>
             <p class="panel-copy">Reference tools and property research shortcuts.</p>
-            <div class="shortcut-note">
-              Shortcuts: Command + 
-              <span class="shortcut-badge">M</span>
-              <span class="shortcut-badge">L</span>
-              <span class="shortcut-badge">S</span>
-              <span class="shortcut-badge">N</span>
-              <span class="shortcut-badge">Z</span>
-              <span class="shortcut-badge">T</span>
-              <span class="shortcut-badge">G</span>
-            </div>
           </div>
 
           <div class="side-grid">
@@ -623,7 +576,7 @@
                 <img src="RMplus.png" alt="RM Plus" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">RM Plus <span class="shortcut-badge">M</span></div>
+                <div class="app-title">RM Plus</div>
                 <p class="app-note">Rightmove Plus dashboard login.</p>
               </div>
             </button>
@@ -633,7 +586,7 @@
                 <img src="Landinsight.png" alt="LandInsight" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">LandInsight <span class="shortcut-badge">L</span></div>
+                <div class="app-title">LandInsight</div>
                 <p class="app-note">Planning and site intelligence.</p>
               </div>
             </button>
@@ -643,7 +596,7 @@
                 <img src="spectre.png" alt="Spectre" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Spectre <span class="shortcut-badge">S</span></div>
+                <div class="app-title">Spectre</div>
                 <p class="app-note">Lead farming and prospecting.</p>
               </div>
             </button>
@@ -653,7 +606,7 @@
                 <img src="nationwide.png" alt="Nationwide HPI" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Nationwide HPI <span class="shortcut-badge">N</span></div>
+                <div class="app-title">Nationwide HPI</div>
                 <p class="app-note">House price index reference.</p>
               </div>
             </button>
@@ -663,7 +616,7 @@
                 <img src="zoopla.png" alt="Zoopla" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Zoopla <span class="shortcut-badge">Z</span></div>
+                <div class="app-title">Zoopla</div>
                 <p class="app-note">Portal and comparables reference.</p>
               </div>
             </button>
@@ -673,7 +626,7 @@
                 <img src="rmove.png" alt="Rightmove" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Rightmove <span class="shortcut-badge">T</span></div>
+                <div class="app-title">Rightmove</div>
                 <p class="app-note">Portal homepage and listing reference.</p>
               </div>
             </button>
@@ -683,7 +636,7 @@
                 <img src="landregistry.png" alt="Land Registry" class="app-logo">
               </div>
               <div class="app-meta">
-                <div class="app-title">Land Registry <span class="shortcut-badge">G</span></div>
+                <div class="app-title">Land Registry</div>
                 <p class="app-note">Title search and property information.</p>
               </div>
             </button>
@@ -701,41 +654,6 @@
     function openInternal(path){
       window.open(path, '_blank', 'noopener,noreferrer');
     }
-
-    document.addEventListener('keydown', function(e){
-      const tag = (document.activeElement && document.activeElement.tagName) || '';
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.isContentEditable) return;
-
-      const key = e.key.toLowerCase();
-
-      const shortcuts = {
-        r: 'https://rezi.dezrez.com/',
-        v: 'https://dashboard.vouch.co.uk/wp-login.php',
-        c: 'https://agents.countrywidesigns.com/@bms/login/',
-        y: 'https://secure.veriphy.co.uk/Portal/Account/Login',
-        m: 'https://rmplus.rightmove.co.uk/login',
-        l: 'https://auth.land.tech/u/login',
-        s: 'https://account.spectre.uk.com/login',
-        n: 'https://www.nationwide.co.uk/house-price-index/',
-        z: 'https://www.zoopla.co.uk/house-prices/',
-        t: 'https://www.rightmove.co.uk/',
-        g: 'https://search-property-information.service.gov.uk'
-      };
-
-      if (key === 'p') {
-        openInternal('/property-launcher.html');
-        return;
-      }
-
-      if (key === 'a') {
-        openInternal('/aml-launcher.html');
-        return;
-      }
-
-      if (shortcuts[key]) {
-        openExternal(shortcuts[key]);
-      }
-    });
   </script>
 </body>
 </html>
