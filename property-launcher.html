@@ -17,31 +17,44 @@ button{padding:12px;width:100%;margin-top:10px}
 
 <p><strong>Hint:</strong> Copy from Rezi to save time</p>
 
-<input id="a1" placeholder="Address line 1">
-<input id="a2" placeholder="Address line 2">
-<input id="town" placeholder="Town">
-<input id="pc" placeholder="Postcode">
+<input id="address1" placeholder="Address">
+<input id="area" placeholder="Area">
+<input id="town" placeholder="Town / City">
+<input id="postcode" placeholder="Postcode">
 
-<button onclick="generate()">Generate Link</button>
-<button onclick="copy()">Copy Link</button>
-<button onclick="openForm()">Open Form</button>
+<button onclick="copyPropertyInfoLink()">Create & Copy Link</button>
+<button onclick="openPropertyInfoForm()">Open Form</button>
 
 <script>
-let link="";
+  const PROPERTY_FORM_BASE = "https://property-information-form.vercel.app/";
+  
+  function buildPropertyInfoLink() {
+    const address1 = document.getElementById("address1").value.trim();
+    const area = document.getElementById("area").value.trim();
+    const town = document.getElementById("town").value.trim();
+    const postcode = document.getElementById("postcode").value.trim();
+  
+    const params = new URLSearchParams({
+      address1: address1,
+      area: area,
+      town: town,
+      postcode: postcode
+    });
+  
+    return `${PROPERTY_FORM_BASE}?${params.toString()}`;
+  }
+  
+  function copyPropertyInfoLink() {
+    const url = buildPropertyInfoLink();
+    navigator.clipboard.writeText(url)
+      .then(() => alert("Property link copied — ready to send"))
+      .catch(() => alert("Copy failed"));
+  }
 
-function generate(){
-  link = `https://property-information-form.vercel.app/?address1=${encodeURIComponent(a1.value)}&address2=${encodeURIComponent(a2.value)}&town=${encodeURIComponent(town.value)}&postcode=${encodeURIComponent(pc.value)}`;
-  alert("Link generated");
-}
-
-function copy(){
-  navigator.clipboard.writeText(link);
-  alert("Copied");
-}
-
-function openForm(){
-  window.open(link, "_blank");
-}
+  function openPropertyInfoForm() {
+    const url = buildPropertyInfoLink();
+    window.open(url, "_blank");
+  }
 </script>
 
 </body>
