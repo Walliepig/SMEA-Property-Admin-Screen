@@ -53,75 +53,75 @@
     }
 
     .hero-actions{
-  margin-top:12px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
+      margin-top:12px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
 
-.search-form{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:var(--bg-soft);
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:6px;
-  box-shadow:var(--shadow-soft);
-}
+    .search-form{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:var(--bg-soft);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px;
+      box-shadow:var(--shadow-soft);
+    }
 
-.search-input{
-  width:220px;
-  border:none;
-  outline:none;
-  background:transparent;
-  padding:8px 12px;
-  font:inherit;
-  font-size:.92rem;
-  color:var(--text);
-}
+    .search-input{
+      width:220px;
+      border:none;
+      outline:none;
+      background:transparent;
+      padding:8px 12px;
+      font:inherit;
+      font-size:.92rem;
+      color:var(--text);
+    }
 
-.search-input::placeholder{
-  color:var(--muted);
-}
+    .search-input::placeholder{
+      color:var(--muted);
+    }
 
-.search-btn{
-  appearance:none;
-  border:none;
-  border-radius:999px;
-  padding:10px 14px;
-  background:linear-gradient(180deg, #ecd37b 0%, #e1be4a 60%, #d6ae2d 100%);
-  color:#171717;
-  font:inherit;
-  font-size:.88rem;
-  font-weight:700;
-  cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-  box-shadow:0 8px 18px rgba(201,162,39,.18);
-}
+    .search-btn{
+      appearance:none;
+      border:none;
+      border-radius:999px;
+      padding:10px 14px;
+      background:linear-gradient(180deg, #ecd37b 0%, #e1be4a 60%, #d6ae2d 100%);
+      color:#171717;
+      font:inherit;
+      font-size:.88rem;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      box-shadow:0 8px 18px rgba(201,162,39,.18);
+    }
 
-.search-btn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 10px 22px rgba(201,162,39,.22);
-}
+    .search-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(201,162,39,.22);
+    }
 
-@media (max-width:760px){
-  .hero-actions{
-    gap:8px;
-  }
+    @media (max-width:760px){
+      .hero-actions{
+        gap:8px;
+      }
 
-  .search-form{
-    width:100%;
-    max-width:360px;
-  }
+      .search-form{
+        width:100%;
+        max-width:360px;
+      }
 
-  .search-input{
-    width:100%;
-    min-width:0;
-  }
-}
+      .search-input{
+        width:100%;
+        min-width:0;
+      }
+    }
 
     .hero-logo{
       width:138px;
@@ -264,7 +264,7 @@
 
     .side-grid{
       display:grid;
-      gap:10px;
+      gap:8px;
     }
 
     .app-card{
@@ -333,6 +333,32 @@
       line-height:1.38;
       color:var(--muted);
       margin:0;
+    }
+
+    /* Smaller Research Bar cards only */
+    .side-grid .app-card{
+      padding:10px;
+      gap:10px;
+      border-radius:18px;
+    }
+
+    .side-grid .app-logo-wrap{
+      width:50px;
+      min-width:50px;
+      height:50px;
+      border-radius:12px;
+      padding:7px;
+    }
+
+    .side-grid .app-title{
+      font-size:.95rem;
+      line-height:1.1;
+      margin:0 0 3px;
+    }
+
+    .side-grid .app-note{
+      font-size:.82rem;
+      line-height:1.3;
     }
 
     .client-app-list{
@@ -502,6 +528,17 @@
         --logo-box:58px;
         --social-box:36px;
       }
+
+      .side-grid .app-card{
+        padding:9px;
+        gap:9px;
+      }
+
+      .side-grid .app-logo-wrap{
+        width:46px;
+        min-width:46px;
+        height:46px;
+      }
     }
 
     .dev-tools{
@@ -566,14 +603,15 @@
       <img src="SM Main Logo.png" alt="Stephanie Macnab Estate Agent" class="hero-logo">
       <h1>Formby's # 1 Estate Agent - Launch Pad</h1>
       <p>Internal dashboard for links, launch screens and property research tools.</p>
-      <div class="hero-actions">
-  <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">Visit Main Website</a>
 
-  <form class="search-form" action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
-    <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
-    <button class="search-btn" type="submit">Search</button>
-  </form>
-</div>
+      <div class="hero-actions">
+        <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">Visit Main Website</a>
+
+        <form class="search-form" action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+          <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
+          <button class="search-btn" type="submit">Search</button>
+        </form>
+      </div>
 
       <div class="social-row">
         <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer" data-tooltip="Content360">
@@ -645,7 +683,7 @@
                 </div>
               </button>
 
-              <button class="app-card" onclick="openExternal('https://secure.veriphy.co.uk/Portal/Account/Login?ReturnUrl=%2f')" data-tooltip="Open VERIPHY">
+              <button class="app-card" onclick="openExternal('https://secure.veriphy.co.uk/Portal/Account/Login?ReturnUrl=%2F')" data-tooltip="Open VERIPHY">
                 <div class="app-logo-wrap">
                   <img src="veriphy.png" alt="VERIPHY" class="app-logo">
                 </div>
@@ -728,6 +766,16 @@
               <div class="app-meta">
                 <div class="app-title">LandInsight</div>
                 <p class="app-note">Planning and site intelligence.</p>
+              </div>
+            </button>
+
+            <button class="app-card" onclick="openExternal('https://www2.promap.co.uk/#/login')" data-tooltip="Open Promap V2">
+              <div class="app-logo-wrap">
+                <img src="PromapV2.png" alt="Promap V2" class="app-logo">
+              </div>
+              <div class="app-meta">
+                <div class="app-title">Promap V2</div>
+                <p class="app-note">Mapping and title plan tools.</p>
               </div>
             </button>
 
