@@ -52,6 +52,77 @@
       margin-bottom:24px;
     }
 
+    .hero-actions{
+  margin-top:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.search-form{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px;
+  box-shadow:var(--shadow-soft);
+}
+
+.search-input{
+  width:220px;
+  border:none;
+  outline:none;
+  background:transparent;
+  padding:8px 12px;
+  font:inherit;
+  font-size:.92rem;
+  color:var(--text);
+}
+
+.search-input::placeholder{
+  color:var(--muted);
+}
+
+.search-btn{
+  appearance:none;
+  border:none;
+  border-radius:999px;
+  padding:10px 14px;
+  background:linear-gradient(180deg, #ecd37b 0%, #e1be4a 60%, #d6ae2d 100%);
+  color:#171717;
+  font:inherit;
+  font-size:.88rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  box-shadow:0 8px 18px rgba(201,162,39,.18);
+}
+
+.search-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(201,162,39,.22);
+}
+
+@media (max-width:760px){
+  .hero-actions{
+    gap:8px;
+  }
+
+  .search-form{
+    width:100%;
+    max-width:360px;
+  }
+
+  .search-input{
+    width:100%;
+    min-width:0;
+  }
+}
+
     .hero-logo{
       width:138px;
       height:auto;
@@ -495,7 +566,14 @@
       <img src="SM Main Logo.png" alt="Stephanie Macnab Estate Agent" class="hero-logo">
       <h1>Formby's #1 Estate Agent - Launch Pad</h1>
       <p>Internal dashboard for links, launch screens and property research tools.</p>
-      <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">Visit Main Website</a>
+      <div class="hero-actions">
+  <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">Visit Main Website</a>
+
+  <form class="search-form" action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
+    <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
+    <button class="search-btn" type="submit">Search</button>
+  </form>
+</div>
 
       <div class="social-row">
         <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer" data-tooltip="Content360">
