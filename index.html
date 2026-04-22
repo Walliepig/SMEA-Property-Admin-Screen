@@ -52,6 +52,31 @@
       margin-bottom:24px;
     }
 
+    .hero-logo{
+      width:138px;
+      height:auto;
+      display:block;
+      margin:0 auto 10px;
+    }
+
+    .hero h1{
+      margin:0 0 6px;
+      font-size:clamp(2.15rem, 3vw, 3.3rem);
+      line-height:1.02;
+      letter-spacing:-0.05em;
+      font-weight:700;
+      color:var(--text);
+    }
+
+    .hero p{
+      margin:0 auto;
+      max-width:760px;
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.45;
+      font-weight:400;
+    }
+
     .hero-actions{
       margin-top:12px;
       display:flex;
@@ -59,6 +84,27 @@
       align-items:center;
       gap:10px;
       flex-wrap:wrap;
+    }
+
+    .hero-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#171717;
+      background:linear-gradient(180deg, #ecd37b 0%, #e1be4a 60%, #d6ae2d 100%);
+      border:1px solid rgba(0,0,0,0.05);
+      font-size:.9rem;
+      font-weight:700;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      box-shadow:0 8px 18px rgba(201,162,39,.18);
+    }
+
+    .hero-link:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(201,162,39,.22);
     }
 
     .search-form{
@@ -107,80 +153,12 @@
       box-shadow:0 10px 22px rgba(201,162,39,.22);
     }
 
-    @media (max-width:760px){
-      .hero-actions{
-        gap:8px;
-      }
-
-      .search-form{
-        width:100%;
-        max-width:360px;
-      }
-
-      .search-input{
-        width:100%;
-        min-width:0;
-      }
-    }
-
-    .hero-logo{
-      width:138px;
-      height:auto;
-      display:block;
-      margin:0 auto 10px;
-    }
-
-    .hero h1{
-      margin:0 0 6px;
-      font-size:clamp(2.15rem, 3vw, 3.3rem);
-      line-height:1.02;
-      letter-spacing:-0.05em;
-      font-weight:700;
-      color:var(--text);
-    }
-
-    .hero p{
-      margin:0 auto;
-      max-width:760px;
-      color:var(--muted);
-      font-size:1rem;
-      line-height:1.45;
-      font-weight:400;
-    }
-
-    .hero-link{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      margin-top:12px;
-      padding:10px 16px;
-      border-radius:999px;
-      text-decoration:none;
-      color:#171717;
-      background:linear-gradient(180deg, #ecd37b 0%, #e1be4a 60%, #d6ae2d 100%);
-      border:1px solid rgba(0,0,0,0.05);
-      font-size:.9rem;
-      font-weight:700;
-      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-      box-shadow:0 8px 18px rgba(201,162,39,.18);
-    }
-
-    .hero-link:hover{
-      transform:translateY(-1px);
-      box-shadow:0 10px 22px rgba(201,162,39,.22);
-    }
-
     .social-row{
       display:flex;
       justify-content:flex-start;
       align-items:center;
       gap:8px;
       margin-top:0;
-      flex-wrap:wrap;
-    }
-      align-items:center;
-      gap:10px;
-      margin-top:14px;
       flex-wrap:wrap;
     }
 
@@ -544,6 +522,20 @@
         min-width:46px;
         height:46px;
       }
+
+      .hero-actions{
+        gap:8px;
+      }
+
+      .search-form{
+        width:100%;
+        max-width:360px;
+      }
+
+      .search-input{
+        width:100%;
+        min-width:0;
+      }
     }
 
     .dev-tools{
@@ -610,55 +602,43 @@
       <p>Internal dashboard for links, launch screens and property research tools.</p>
 
       <div class="hero-actions">
-    
-      <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">
-        Visit Main Website
-      </a>
-    
-      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
-        <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
-        <button class="search-btn" type="submit">Search</button>
-      </form>
-    
-      <div class="social-row">
-        <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" data-tooltip="Content360">...</a>
-    
-        <a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank" data-tooltip="Facebook">...</a>
-    
-        <a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank" data-tooltip="Instagram">...</a>
-    
-        <a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank" data-tooltip="TikTok">...</a>
-      </div>
-
-</div>
-
-      <div class="social-row">
-        <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer" data-tooltip="Content360">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3.25 20 7.85v8.3L12 20.75 4 16.15v-8.3L12 3.25Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M12 3.25v17.5M4.6 8.2 19.4 15.8M19.4 8.2 4.6 15.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+        <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">
+          Visit Main Website
         </a>
 
-        <a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank" rel="noopener noreferrer" data-tooltip="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6H17V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10H8v3h2.2v8h3.3Z"/>
-          </svg>
-        </a>
+        <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+          <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
+          <button class="search-btn" type="submit">Search</button>
+        </form>
 
-        <a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank" rel="noopener noreferrer" data-tooltip="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
-          </svg>
-        </a>
+        <div class="social-row">
+          <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer" data-tooltip="Content360">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3.25 20 7.85v8.3L12 20.75 4 16.15v-8.3L12 3.25Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M12 3.25v17.5M4.6 8.2 19.4 15.8M19.4 8.2 4.6 15.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
 
-        <a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank" rel="noopener noreferrer" data-tooltip="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M15.8 3c.3 1.7 1.3 3.1 2.8 3.8.7.3 1.4.5 2.1.5v3a8 8 0 0 1-4.9-1.6v6.7a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.4 2.4 0 1 0 1.5 2.2V3h3.2Z"/>
-          </svg>
-        </a>
+          <a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank" rel="noopener noreferrer" data-tooltip="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6H17V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10H8v3h2.2v8h3.3Z"/>
+            </svg>
+          </a>
+
+          <a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank" rel="noopener noreferrer" data-tooltip="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
+            </svg>
+          </a>
+
+          <a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank" rel="noopener noreferrer" data-tooltip="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M15.8 3c.3 1.7 1.3 3.1 2.8 3.8.7.3 1.4.5 2.1.5v3a8 8 0 0 1-4.9-1.6v6.7a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.4 2.4 0 1 0 1.5 2.2V3h3.2Z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </header>
 
