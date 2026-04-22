@@ -172,7 +172,12 @@
 
     .social-row{
       display:flex;
-      justify-content:center;
+      justify-content:flex-start;
+      align-items:center;
+      gap:8px;
+      margin-top:0;
+      flex-wrap:wrap;
+    }
       align-items:center;
       gap:10px;
       margin-top:14px;
@@ -605,13 +610,27 @@
       <p>Internal dashboard for links, launch screens and property research tools.</p>
 
       <div class="hero-actions">
-        <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">Visit Main Website</a>
-
-        <form class="search-form" action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
-          <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
-          <button class="search-btn" type="submit">Search</button>
-        </form>
+    
+      <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">
+        Visit Main Website
+      </a>
+    
+      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+        <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
+        <button class="search-btn" type="submit">Search</button>
+      </form>
+    
+      <div class="social-row">
+        <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" data-tooltip="Content360">...</a>
+    
+        <a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank" data-tooltip="Facebook">...</a>
+    
+        <a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank" data-tooltip="Instagram">...</a>
+    
+        <a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank" data-tooltip="TikTok">...</a>
       </div>
+
+</div>
 
       <div class="social-row">
         <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer" data-tooltip="Content360">
@@ -838,6 +857,16 @@
               <div class="app-meta">
                 <div class="app-title">Land Registry</div>
                 <p class="app-note">Title search and property information.</p>
+              </div>
+            </button>
+
+            <button class="app-card" onclick="openExternal('https://find-energy-certificate.service.gov.uk/find-a-certificate/search-by-postcode?lang=en&property_type=domestic')" data-tooltip="Open EPC Search">
+              <div class="app-logo-wrap">
+                <img src="epc.png" alt="EPC Search" class="app-logo">
+              </div>
+              <div class="app-meta">
+                <div class="app-title">EPC Search</div>
+                <p class="app-note">Find domestic EPC certificates.</p>
               </div>
             </button>
           </div>
