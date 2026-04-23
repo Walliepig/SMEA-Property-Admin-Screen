@@ -100,6 +100,16 @@ body{
   box-shadow:0 8px 18px rgba(201,162,39,.18);
 }
 
+  .chatgpt-link{
+  background:#f3f4f6;
+  color:#111111;
+  box-shadow:var(--shadow-soft);
+}
+
+.chatgpt-link:hover{
+  background:#e9ecef;
+}
+
 .search-form{
   display:flex;
   align-items:center;
@@ -376,8 +386,22 @@ body{
 <div class="stack">
 
 <section class="hero-actions">
-  <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank">Visit Main Website</a>
+<div class="hero-actions">
 
+<a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">
+Main Website
+</a>
+
+<a class="hero-link chatgpt-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
+Ask ChatGPT
+</a>
+
+<form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+<input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
+<button class="search-btn" type="submit">Search</button>
+</form>
+
+</div>
   <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
     <input class="search-input" type="text" name="q" placeholder="Google search...">
     <button class="search-btn" type="submit">Search</button>
