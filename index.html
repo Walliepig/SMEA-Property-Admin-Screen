@@ -297,7 +297,15 @@ body{
 
 .app-note{
   font-size:.9rem;
-  color:var(--muted);
+  color:var(--muted);<button class="app-card" onclick="openExternal('https://www.nationwide.co.uk/house-price-index/')">
+  <div class="app-logo-wrap">
+    <img src="nationwide.png" class="app-logo" alt="Nationwide HPI">
+  </div>
+  <div class="app-meta">
+    <div class="app-title">Nationwide HPI</div>
+    <p class="app-note">House price index.</p>
+  </div>
+</button>
   margin:0;
 }
 
@@ -616,6 +624,16 @@ Hint: keep this page open as your control screen.
 <div class="app-logo-wrap"><img src="spectre.png" class="app-logo" alt="Spectre"></div>
 <div class="app-meta"><div class="app-title">Spectre</div><p class="app-note">Lead farming.</p></div>
 </button>
+
+<button class="app-card" onclick="openExternal('https://www.nationwide.co.uk/house-price-index/')">
+  <div class="app-logo-wrap">
+    <img src="nationwide.png" class="app-logo" alt="Nationwide HPI">
+  </div>
+  <div class="app-meta">
+    <div class="app-title">Nationwide HPI</div>
+    <p class="app-note">House price index.</p>
+  </div>
+</button>  
 
 <button class="app-card" onclick="openExternal('https://www.zoopla.co.uk/house-prices/')">
 <div class="app-logo-wrap"><img src="zoopla.png" class="app-logo" alt="Zoopla"></div>
