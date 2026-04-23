@@ -16,7 +16,6 @@
   --gold:#E1BE4A;
   --shadow:0 14px 34px rgba(15,23,42,.07);
   --shadow-soft:0 8px 22px rgba(15,23,42,.05);
-  --shadow-hover:0 16px 34px rgba(15,23,42,.09);
   --radius-xl:24px;
   --logo-box:68px;
   --social-box:38px;
@@ -38,33 +37,46 @@ body{
   padding:24px 18px 48px;
 }
 
+/* HEADER */
 .hero{
-  text-align:center;
-  padding:2px 12px 18px;
+  padding:0 0 20px;
   border-bottom:1px solid var(--line);
   margin-bottom:24px;
 }
 
+.hero-head{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
 .hero-logo{
-  width:138px;
-  display:block;
-  margin:0 auto 10px;
+  width:110px;
+  height:auto;
+  flex:0 0 auto;
+}
+
+.hero-copy{
+  text-align:left;
 }
 
 .hero h1{
   margin:0 0 6px;
-  font-size:clamp(2.15rem,3vw,3.3rem);
+  font-size:clamp(2rem,3vw,3.4rem);
   line-height:1.02;
   letter-spacing:-.05em;
 }
 
 .hero p{
-  margin:0 auto;
-  max-width:760px;
+  margin:0;
   color:var(--muted);
   font-size:1rem;
 }
 
+/* MAIN GRID */
 .layout{
   display:grid;
   grid-template-columns:1.92fr 1fr;
@@ -77,13 +89,12 @@ body{
   gap:20px;
 }
 
+/* ACTION BAR */
 .hero-actions{
   display:flex;
   align-items:center;
   gap:10px;
   flex-wrap:nowrap;
-  margin-bottom:0;
-  overflow:hidden;
 }
 
 .hero-link{
@@ -93,22 +104,14 @@ body{
   padding:10px 18px;
   border-radius:999px;
   text-decoration:none;
-  color:#171717;
   font-weight:700;
+  color:#171717;
   background:linear-gradient(180deg,#ecd37b 0%,#e1be4a 60%,#d6ae2d 100%);
-  box-shadow:0 8px 18px rgba(201,162,39,.18);
   white-space:nowrap;
-  flex:0 0 auto;
 }
 
 .chatgpt-link{
   background:#f3f4f6;
-  color:#111111;
-  box-shadow:var(--shadow-soft);
-}
-
-.chatgpt-link:hover{
-  background:#e9ecef;
 }
 
 .search-form{
@@ -120,20 +123,16 @@ body{
   border-radius:999px;
   padding:6px;
   width:420px;
-  max-width:100%;
-  flex:0 1 420px;
-  min-width:0;
+  flex:0 0 auto;
 }
 
 .search-input{
   border:none;
   outline:none;
   background:transparent;
-  width:100%;
-  min-width:0;
+  width:240px;
   padding:8px 12px;
   font:inherit;
-  color:var(--text);
 }
 
 .search-btn{
@@ -144,15 +143,12 @@ body{
   font-weight:700;
   cursor:pointer;
   background:linear-gradient(180deg,#ecd37b 0%,#e1be4a 60%,#d6ae2d 100%);
-  white-space:nowrap;
-  flex:0 0 auto;
 }
 
 .social-row{
   display:flex;
   gap:8px;
   flex:0 0 auto;
-  white-space:nowrap;
 }
 
 .social-link{
@@ -165,30 +161,21 @@ body{
   align-items:center;
   justify-content:center;
   text-decoration:none;
-  box-shadow:var(--shadow-soft);
-  font-size:18px;
-  line-height:1;
+  font-weight:700;
+  color:#111;
 }
 
-.social-link svg{
-  width:18px;
-  height:18px;
-}
-
-.social-link.content360{color:#2f3542;}
-.social-link.facebook{color:#1877f2;}
-.social-link.instagram{color:#c13584;}
-.social-link.tiktok{color:#111111;}
-
+/* PANELS */
 .panel{
   background:#fff;
   border:1px solid var(--line);
   border-radius:var(--radius-xl);
   box-shadow:var(--shadow);
-  overflow:hidden;
 }
 
-.panel-inner{padding:20px;}
+.panel-inner{
+  padding:20px;
+}
 
 .panel h2{
   margin:0;
@@ -201,19 +188,24 @@ body{
   color:var(--muted);
 }
 
-.section-head{margin-bottom:14px;}
+.section-head{
+  margin-bottom:14px;
+}
 
+/* QUICK LINKS */
 .quick-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:12px;
 }
 
+/* SIDE BAR */
 .side-grid{
   display:grid;
   gap:8px;
 }
 
+/* CARDS */
 .app-card{
   width:100%;
   border:1px solid var(--line);
@@ -225,12 +217,10 @@ body{
   gap:12px;
   cursor:pointer;
   text-align:left;
-  box-shadow:var(--shadow-soft);
 }
 
 .side-grid .app-card{
   padding:10px;
-  gap:10px;
 }
 
 .app-logo-wrap{
@@ -239,12 +229,12 @@ body{
   height:var(--logo-box);
   border-radius:16px;
   background:var(--bg-soft);
-  border:1px solid rgba(17,17,17,.05);
+  border:1px solid var(--line);
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
   padding:8px;
+  overflow:hidden;
 }
 
 .side-grid .app-logo-wrap{
@@ -267,18 +257,16 @@ body{
   margin:0 0 4px;
 }
 
-.side-grid .app-title{font-size:.95rem;}
-
 .app-note{
   font-size:.9rem;
   color:var(--muted);
   margin:0;
 }
 
-.side-grid .app-note{
-  font-size:.82rem;
-}
+.side-grid .app-title{font-size:.95rem;}
+.side-grid .app-note{font-size:.82rem;}
 
+/* CLIENT APPS */
 .client-app-list{
   display:grid;
   gap:12px;
@@ -322,6 +310,7 @@ body{
   color:var(--muted);
 }
 
+/* DEV TOOLS */
 .dev-tools{
   margin-top:18px;
   padding-top:14px;
@@ -335,7 +324,7 @@ body{
   padding:7px 12px;
   border-radius:999px;
   background:#f3f4f6;
-  border:1px solid rgba(0,0,0,.06);
+  border:1px solid var(--line);
   color:#4b5563;
   text-decoration:none;
   font-size:.82rem;
@@ -350,29 +339,38 @@ body{
   font-size:.86rem;
 }
 
+/* RESPONSIVE */
 @media(max-width:980px){
   .layout{grid-template-columns:1fr;}
   .quick-grid{grid-template-columns:1fr;}
-  .hero-actions{
-    flex-wrap:wrap;
-  }
 }
 
 @media(max-width:760px){
+
+  .hero-head{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .hero-copy{
+    text-align:center;
+  }
+
+  .hero-logo{
+    width:95px;
+  }
+
   .hero-actions{
     flex-direction:column;
     align-items:stretch;
   }
 
   .search-form{
-    min-width:0;
     width:100%;
-    flex:0 0 auto;
   }
 
   .social-row{
     justify-content:center;
-    width:100%;
   }
 
   .client-app-row{
@@ -391,35 +389,35 @@ body{
 <div class="page">
 
 <header class="hero">
-  <img src="SM Main Logo.png" alt="Stephanie Macnab Estate Agent" class="hero-logo">
-  <h1>Formby's # 1 Estate Agent - Launch Pad</h1>
-  <p>Internal dashboard for links, launch screens and property research tools.</p>
+  <div class="hero-head">
+    <img src="SM Main Logo.png" alt="Stephanie Macnab Estate Agent" class="hero-logo">
+    <div class="hero-copy">
+      <h1>Formby's # 1 Estate Agent - Launch Pad</h1>
+      <p>Internal dashboard for links, launch screens and property research tools.</p>
+    </div>
+  </div>
 </header>
 
 <main class="layout">
 
+<!-- LEFT -->
 <div class="stack">
 
 <section class="hero-actions">
-  <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">
-    Main Website
-  </a>
+<a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank">Main Website</a>
+<a class="hero-link chatgpt-link" href="https://chatgpt.com/" target="_blank">Ask ChatGPT</a>
 
-  <a class="hero-link chatgpt-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
-    Ask ChatGPT
-  </a>
+<form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+<input class="search-input" type="text" name="q" placeholder="Google search...">
+<button class="search-btn" type="submit">Search</button>
+</form>
 
-  <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
-    <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
-    <button class="search-btn" type="submit">Search</button>
-  </form>
-
-  <div class="social-row">
-    <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer">◈</a>
-    <a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank" rel="noopener noreferrer">f</a>
-    <a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank" rel="noopener noreferrer">◎</a>
-    <a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank" rel="noopener noreferrer">♪</a>
-  </div>
+<div class="social-row">
+<a class="social-link" href="https://app.content360.io/" target="_blank">◈</a>
+<a class="social-link" href="https://facebook.com/" target="_blank">f</a>
+<a class="social-link" href="https://instagram.com/" target="_blank">◎</a>
+<a class="social-link" href="https://tiktok.com/" target="_blank">♪</a>
+</div>
 </section>
 
 <section class="panel">
@@ -431,25 +429,13 @@ body{
 
 <div class="quick-grid">
 
-<button class="app-card" onclick="openExternal('https://rezi.dezrez.com/')">
-<div class="app-logo-wrap"><img src="rezi-logo.png" class="app-logo"></div>
-<div class="app-meta"><div class="app-title">Rezi</div><p class="app-note">CRM access and live property records.</p></div>
-</button>
+<button class="app-card"><div class="app-logo-wrap"><img src="rezi-logo.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Rezi</div><p class="app-note">CRM access.</p></div></button>
 
-<button class="app-card" onclick="openExternal('https://dashboard.vouch.co.uk/wp-login.php')">
-<div class="app-logo-wrap"><img src="vouch.png" class="app-logo"></div>
-<div class="app-meta"><div class="app-title">Vouch</div><p class="app-note">Compliance and onboarding dashboard.</p></div>
-</button>
+<button class="app-card"><div class="app-logo-wrap"><img src="vouch.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Vouch</div><p class="app-note">Compliance dashboard.</p></div></button>
 
-<button class="app-card" onclick="openExternal('https://agents.countrywidesigns.com/')">
-<div class="app-logo-wrap"><img src="countrywide.png" class="app-logo"></div>
-<div class="app-meta"><div class="app-title">Countrywide</div><p class="app-note">Boards and contractor login.</p></div>
-</button>
+<button class="app-card"><div class="app-logo-wrap"><img src="countrywide.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Countrywide</div><p class="app-note">Boards.</p></div></button>
 
-<button class="app-card" onclick="openExternal('https://secure.veriphy.co.uk/')">
-<div class="app-logo-wrap"><img src="veriphy.png" class="app-logo"></div>
-<div class="app-meta"><div class="app-title">VERIPHY</div><p class="app-note">Verification and screening portal.</p></div>
-</button>
+<button class="app-card"><div class="app-logo-wrap"><img src="veriphy.png" class="app-logo"></div><div class="app-meta"><div class="app-title">VERIPHY</div><p class="app-note">Verification.</p></div></button>
 
 </div>
 </div>
@@ -466,40 +452,39 @@ body{
 <div class="client-app-list">
 
 <div class="client-app-row">
-<button class="client-btn primary" onclick="openInternal('/property-launcher.html')">Launch Property Info App</button>
+<button class="client-btn primary">Launch Property Info App</button>
 <div class="client-copy">
 <h3>Property Information</h3>
-<p>Prepare pre-filled property information links.</p>
+<p>Prepare pre-filled links.</p>
 </div>
 </div>
 
 <div class="client-app-row">
-<button class="client-btn secondary" onclick="openInternal('/aml-launcher.html')">Launch AML Upload App</button>
+<button class="client-btn secondary">Launch AML Upload App</button>
 <div class="client-copy">
 <h3>AML Compliance</h3>
-<p>Prepare the AML client upload link.</p>
+<p>Prepare client upload link.</p>
 </div>
 </div>
 
 </div>
 
 <div class="dev-tools">
-<a class="dev-link" href="https://vercel.com/simon-7025s-projects" target="_blank">Vercel</a>
-<a class="dev-link" href="https://github.com/Walliepig" target="_blank">GitHub</a>
-<a class="dev-link" href="https://resend.com/emails" target="_blank">Resend</a>
-<a class="dev-link" href="https://watermarkimage.com/en" target="_blank">Watermark</a>
-<a class="dev-link" href="https://sso.godaddy.com" target="_blank">GoDaddy</a>
+<a class="dev-link" href="#">Vercel</a>
+<a class="dev-link" href="#">GitHub</a>
+<a class="dev-link" href="#">Resend</a>
+<a class="dev-link" href="#">Watermark</a>
+<a class="dev-link" href="#">GoDaddy</a>
 </div>
 
-<div class="footer-note">
-Hint: keep this page open as your control screen.
-</div>
+<div class="footer-note">Hint: keep this page open as your control screen.</div>
 
 </div>
 </section>
 
 </div>
 
+<!-- RIGHT -->
 <aside class="panel">
 <div class="panel-inner">
 
@@ -510,36 +495,21 @@ Hint: keep this page open as your control screen.
 
 <div class="side-grid">
 
-<button class="app-card" onclick="openExternal('https://rmplus.rightmove.co.uk/login')"><div class="app-logo-wrap"><img src="RMplus.png" class="app-logo"></div><div class="app-meta"><div class="app-title">RM Plus</div><p class="app-note">Rightmove Plus login.</p></div></button>
+<button class="app-card"><div class="app-logo-wrap"><img src="RMplus.png" class="app-logo"></div><div class="app-meta"><div class="app-title">RM Plus</div></div></button>
 
-<button class="app-card" onclick="openExternal('https://auth.land.tech/u/login')"><div class="app-logo-wrap"><img src="Landinsight.png" class="app-logo"></div><div class="app-meta"><div class="app-title">LandInsight</div><p class="app-note">Planning and site data.</p></div></button>
+<button class="app-card"><div class="app-logo-wrap"><img src="Landinsight.png" class="app-logo"></div><div class="app-meta"><div class="app-title">LandInsight</div></div></button>
 
-<button class="app-card" onclick="openExternal('https://www2.promap.co.uk/#/login')"><div class="app-logo-wrap"><img src="PromapV2.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Promap V2</div><p class="app-note">Mapping tools.</p></div></button>
+<button class="app-card"><div class="app-logo-wrap"><img src="PromapV2.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Promap V2</div></div></button>
 
-<button class="app-card" onclick="openExternal('https://pa.sefton.gov.uk/online-applications/')"><div class="app-logo-wrap"><img src="sefton-planning.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Sefton Planning</div><p class="app-note">Planning search.</p></div></button>
+<button class="app-card"><div class="app-logo-wrap"><img src="EPC.png" class="app-logo"></div><div class="app-meta"><div class="app-title">EPC Search</div></div></button>
 
-<button class="app-card" onclick="openExternal('https://account.spectre.uk.com/login')"><div class="app-logo-wrap"><img src="spectre.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Spectre</div><p class="app-note">Lead farming.</p></div></button>
-
-<button class="app-card" onclick="openExternal('https://www.zoopla.co.uk/house-prices/')"><div class="app-logo-wrap"><img src="zoopla.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Zoopla</div><p class="app-note">Comparables.</p></div></button>
-
-<button class="app-card" onclick="openExternal('https://search-property-information.service.gov.uk')"><div class="app-logo-wrap"><img src="landregistry.png" class="app-logo"></div><div class="app-meta"><div class="app-title">Land Registry</div><p class="app-note">Title search.</p></div></button>
-
-<button class="app-card" onclick="openExternal('https://find-energy-certificate.service.gov.uk/find-a-certificate/search-by-postcode?lang=en&property_type=domestic')"><div class="app-logo-wrap"><img src="EPC.png" class="app-logo" alt="EPC Search"></div><div class="app-meta"><div class="app-title">EPC Search</div><p class="app-note">Find EPCs.</p></div></button>
 </div>
+
 </div>
 </aside>
 
 </main>
 </div>
-
-<script>
-function openExternal(url){
-  window.open(url,'_blank','noopener,noreferrer');
-}
-function openInternal(path){
-  window.open(path,'_blank','noopener,noreferrer');
-}
-</script>
 
 </body>
 </html>
