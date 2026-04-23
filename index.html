@@ -65,7 +65,6 @@ body{
   font-size:1rem;
 }
 
-/* MAIN LAYOUT */
 .layout{
   display:grid;
   grid-template-columns:1.92fr 1fr;
@@ -78,13 +77,13 @@ body{
   gap:20px;
 }
 
-/* ACTION BAR NOW INSIDE LEFT COLUMN */
 .hero-actions{
   display:flex;
   align-items:center;
   gap:10px;
   flex-wrap:nowrap;
   margin-bottom:0;
+  overflow:hidden;
 }
 
 .hero-link{
@@ -98,9 +97,11 @@ body{
   font-weight:700;
   background:linear-gradient(180deg,#ecd37b 0%,#e1be4a 60%,#d6ae2d 100%);
   box-shadow:0 8px 18px rgba(201,162,39,.18);
+  white-space:nowrap;
+  flex:0 0 auto;
 }
 
-  .chatgpt-link{
+.chatgpt-link{
   background:#f3f4f6;
   color:#111111;
   box-shadow:var(--shadow-soft);
@@ -118,17 +119,18 @@ body{
   border:1px solid var(--line);
   border-radius:999px;
   padding:6px;
-  width:500px;
+  width:420px;
   max-width:100%;
-  flex:0 0 auto;
+  flex:0 1 420px;
+  min-width:0;
 }
 
 .search-input{
   border:none;
   outline:none;
   background:transparent;
-  width:320px;
-  max-width:100%;
+  width:100%;
+  min-width:0;
   padding:8px 12px;
   font:inherit;
   color:var(--text);
@@ -142,6 +144,8 @@ body{
   font-weight:700;
   cursor:pointer;
   background:linear-gradient(180deg,#ecd37b 0%,#e1be4a 60%,#d6ae2d 100%);
+  white-space:nowrap;
+  flex:0 0 auto;
 }
 
 .social-row{
@@ -162,6 +166,8 @@ body{
   justify-content:center;
   text-decoration:none;
   box-shadow:var(--shadow-soft);
+  font-size:18px;
+  line-height:1;
 }
 
 .social-link svg{
@@ -262,11 +268,13 @@ body{
 }
 
 .side-grid .app-title{font-size:.95rem;}
+
 .app-note{
   font-size:.9rem;
   color:var(--muted);
   margin:0;
 }
+
 .side-grid .app-note{
   font-size:.82rem;
 }
@@ -345,6 +353,9 @@ body{
 @media(max-width:980px){
   .layout{grid-template-columns:1fr;}
   .quick-grid{grid-template-columns:1fr;}
+  .hero-actions{
+    flex-wrap:wrap;
+  }
 }
 
 @media(max-width:760px){
@@ -356,6 +367,7 @@ body{
   .search-form{
     min-width:0;
     width:100%;
+    flex:0 0 auto;
   }
 
   .social-row{
@@ -386,32 +398,28 @@ body{
 
 <main class="layout">
 
-<!-- LEFT COLUMN -->
 <div class="stack">
 
 <section class="hero-actions">
-<section class="hero-actions">
+  <a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">
+    Main Website
+  </a>
 
-<a class="hero-link" href="https://www.stephaniemacnab.co.uk/" target="_blank" rel="noopener noreferrer">
-Main Website
-</a>
+  <a class="hero-link chatgpt-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
+    Ask ChatGPT
+  </a>
 
-<a class="hero-link chatgpt-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
-Ask ChatGPT
-</a>
+  <form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
+    <input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
+    <button class="search-btn" type="submit">Search</button>
+  </form>
 
-<form class="search-form" action="https://www.google.com/search" method="get" target="_blank">
-<input class="search-input" type="text" name="q" placeholder="Google search..." aria-label="Google search">
-<button class="search-btn" type="submit">Search</button>
-</form>
-
-<div class="social-row">
-<a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank">◈</a>
-<a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank">f</a>
-<a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank">◎</a>
-<a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank">♪</a>
-</div>
-
+  <div class="social-row">
+    <a class="social-link content360" href="https://app.content360.io/os/03f1c8ca-108a-419a-b2d5-3c8fa34f5b4a/posts" target="_blank" rel="noopener noreferrer">◈</a>
+    <a class="social-link facebook" href="https://www.facebook.com/stephaniemacnabestateagents/" target="_blank" rel="noopener noreferrer">f</a>
+    <a class="social-link instagram" href="https://www.instagram.com/stephaniemacnabestateagent/" target="_blank" rel="noopener noreferrer">◎</a>
+    <a class="social-link tiktok" href="https://www.tiktok.com/tag/stephaniemacnab" target="_blank" rel="noopener noreferrer">♪</a>
+  </div>
 </section>
 
 <section class="panel">
@@ -492,7 +500,6 @@ Hint: keep this page open as your control screen.
 
 </div>
 
-<!-- RIGHT COLUMN -->
 <aside class="panel">
 <div class="panel-inner">
 
