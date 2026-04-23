@@ -82,8 +82,8 @@ body{
 .hero-actions{
   display:flex;
   align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
+  gap:10px;
+  flex-wrap:nowrap;
   margin-bottom:0;
 }
 
@@ -118,15 +118,17 @@ body{
   border:1px solid var(--line);
   border-radius:999px;
   padding:6px;
-  flex:1;
-  min-width:280px;
+  width:500px;
+  max-width:100%;
+  flex:0 0 auto;
 }
 
 .search-input{
   border:none;
   outline:none;
   background:transparent;
-  width:100%;
+  width:320px;
+  max-width:100%;
   padding:8px 12px;
   font:inherit;
   color:var(--text);
@@ -145,6 +147,8 @@ body{
 .social-row{
   display:flex;
   gap:8px;
+  flex:0 0 auto;
+  white-space:nowrap;
 }
 
 .social-link{
