@@ -8,19 +8,24 @@
 <style>
 :root{
   --bg:#ffffff;
-  --bg-soft:#f6f7f8;
+  --bg-soft:#f7f7f8;
   --panel:#ffffff;
-  --text:#111111;
-  --muted:#6b7280;
-  --line:rgba(17,17,17,.08);
+  --text:#1d1d1f;
+  --muted:#86868b;
+  --line:rgba(0,0,0,.06);
+  --line-strong:rgba(0,0,0,.09);
   --gold:#E1BE4A;
-  --shadow:0 14px 34px rgba(15,23,42,.07);
-  --shadow-soft:0 8px 22px rgba(15,23,42,.05);
-  --shadow-hover:0 16px 34px rgba(15,23,42,.09);
-  --radius-xl:24px;
-  --logo-box:68px;
+  --gold-deep:#c9a227;
+  --shadow-1:0 1px 2px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.03);
+  --shadow-2:0 4px 16px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+  --shadow-3:0 20px 40px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.04);
+  --radius-xl:28px;
+  --radius-lg:20px;
+  --radius-md:16px;
+  --logo-box:64px;
   --social-box:38px;
   --max:1220px;
+  --ease:cubic-bezier(.4,0,.2,1);
 }
 
 *{box-sizing:border-box}
@@ -30,34 +35,40 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
 
 .page{
   max-width:var(--max);
   margin:0 auto;
-  padding:24px 18px 48px;
+  padding:32px 20px 56px;
 }
 
 /* HEADER */
 .hero{
-  padding:0 0 20px;
+  padding:0 0 28px;
   border-bottom:1px solid var(--line);
-  margin-bottom:24px;
+  margin-bottom:32px;
 }
 
 .hero-head{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:20px;
+  gap:22px;
   max-width:1200px;
   margin:0 auto;
 }
 
 .hero-logo{
-  width:110px;
+  width:104px;
   height:auto;
   flex:0 0 auto;
+  transition:transform .35s var(--ease);
+}
+
+.hero-logo:hover{
+  transform:scale(1.05);
 }
 
 .hero-copy{
@@ -66,28 +77,30 @@ body{
 
 .hero h1{
   margin:0 0 6px;
-  font-size:clamp(1.8rem,2.5vw,2.8rem);
-  line-height:1.02;
-  letter-spacing:-.05em;
+  font-size:clamp(1.7rem,2.4vw,2.6rem);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  font-weight:650;
 }
 
 .hero p{
   margin:0;
   color:var(--muted);
   font-size:1rem;
+  font-weight:400;
 }
 
 /* MAIN GRID */
 .layout{
   display:grid;
   grid-template-columns:1.92fr 1fr;
-  gap:20px;
+  gap:24px;
   align-items:start;
 }
 
 .stack{
   display:grid;
-  gap:20px;
+  gap:24px;
 }
 
 /* ACTION BAR */
@@ -103,38 +116,51 @@ body{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:10px 18px;
+  padding:11px 20px;
   border-radius:999px;
   text-decoration:none;
   font-weight:600;
+  font-size:.94rem;
   color:#171717;
-  background:linear-gradient(180deg,#ecd37b 0%,#e1be4a 60%,#d6ae2d 100%);
+  background:linear-gradient(180deg,#f0dd93 0%,#e1be4a 55%,#d9b334 100%);
   white-space:nowrap;
-  box-shadow:0 8px 18px rgba(201,162,39,.18);
+  box-shadow:var(--shadow-1);
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.hero-link:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-2);
 }
 
 .chatgpt-link{
-  background:#f3f4f6;
-  color:#111111;
-  box-shadow:var(--shadow-soft);
+  background:var(--bg-soft);
+  color:var(--text);
+  box-shadow:var(--shadow-1);
 }
 
 .chatgpt-link:hover{
-  background:#e9ecef;
+  background:#eeeef0;
 }
 
 .search-form{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:6px;
   background:var(--bg-soft);
   border:1px solid var(--line);
   border-radius:999px;
-  padding:6px;
+  padding:5px;
   width:420px;
   max-width:100%;
   flex:0 1 420px;
   min-width:0;
+  transition:box-shadow .2s var(--ease), border-color .2s var(--ease);
+}
+
+.search-form:focus-within{
+  border-color:var(--line-strong);
+  box-shadow:0 0 0 4px rgba(225,190,74,.16);
 }
 
 .search-input{
@@ -143,21 +169,28 @@ body{
   background:transparent;
   width:100%;
   min-width:0;
-  padding:8px 12px;
+  padding:8px 14px;
   font:inherit;
+  font-size:.94rem;
   color:var(--text);
 }
 
 .search-btn{
   border:none;
   border-radius:999px;
-  padding:10px 16px;
+  padding:10px 18px;
   font:inherit;
-  font-weight:700;
+  font-size:.94rem;
+  font-weight:600;
   cursor:pointer;
-  background:linear-gradient(180deg,#ecd37b 0%,#e1be4a 60%,#d6ae2d 100%);
+  background:linear-gradient(180deg,#f0dd93 0%,#e1be4a 55%,#d9b334 100%);
   white-space:nowrap;
   flex:0 0 auto;
+  transition:transform .2s var(--ease);
+}
+
+.search-btn:hover{
+  transform:translateY(-1px);
 }
 
 .social-row{
@@ -177,13 +210,15 @@ body{
   align-items:center;
   justify-content:center;
   text-decoration:none;
-  box-shadow:var(--shadow-soft);
-  color:#111;
+  box-shadow:var(--shadow-1);
+  color:var(--text);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
 }
 
 .social-link:hover{
-  transform:translateY(-1px);
-  box-shadow:var(--shadow-hover);
+  transform:translateY(-2px) scale(1.06);
+  box-shadow:var(--shadow-2);
+  background:#fff;
 }
 
 .social-link svg{
@@ -197,32 +232,84 @@ body{
 .social-link.instagram{color:#c13584;}
 .social-link.tiktok{color:#111111;}
 
+/* DEV GEAR */
+.dev-gear{
+  position:fixed;
+  top:18px;
+  right:18px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  text-decoration:none;
+  opacity:.55;
+  transition:opacity .25s var(--ease), transform .35s var(--ease), background .25s var(--ease), color .25s var(--ease);
+  z-index:50;
+}
+
+.dev-gear:hover{
+  opacity:1;
+  background:#fff;
+  color:var(--text);
+  box-shadow:var(--shadow-2);
+  transform:rotate(45deg);
+}
+
+.dev-gear svg{
+  width:17px;
+  height:17px;
+}
+
 /* PANELS */
 .panel{
   background:#fff;
   border:1px solid var(--line);
   border-radius:var(--radius-xl);
-  box-shadow:var(--shadow);
+  box-shadow:var(--shadow-2);
   overflow:hidden;
 }
 
 .panel-inner{
-  padding:20px;
+  padding:24px;
 }
 
 .panel h2{
   margin:0;
-  font-size:1.68rem;
-  letter-spacing:-.04em;
+  font-size:1.5rem;
+  letter-spacing:-.03em;
+  font-weight:650;
 }
 
 .panel-copy{
-  margin:8px 0 0;
+  margin:6px 0 0;
   color:var(--muted);
+  font-size:.94rem;
 }
 
 .section-head{
-  margin-bottom:14px;
+  margin-bottom:18px;
+}
+
+.subsection{
+  margin-bottom:22px;
+}
+
+.subsection:last-child{
+  margin-bottom:0;
+}
+
+.subsection-label{
+  margin:0 0 12px;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
 }
 
 /* QUICK LINKS */
@@ -243,18 +330,25 @@ body{
   width:100%;
   border:1px solid var(--line);
   background:#fff;
-  border-radius:20px;
-  padding:12px;
+  border-radius:var(--radius-lg);
+  padding:14px;
   display:flex;
   align-items:center;
   gap:12px;
   cursor:pointer;
   text-align:left;
-  box-shadow:var(--shadow-soft);
+  box-shadow:var(--shadow-1);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
 }
 
 .app-card:hover{
-  box-shadow:var(--shadow-hover);
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-3);
+  border-color:var(--line-strong);
+}
+
+.app-card:hover .app-logo{
+  transform:scale(1.08);
 }
 
 .side-grid .app-card{
@@ -265,52 +359,63 @@ body{
   width:var(--logo-box);
   min-width:var(--logo-box);
   height:var(--logo-box);
-  border-radius:16px;
+  border-radius:var(--radius-md);
   background:var(--bg-soft);
-  border:1px solid rgba(17,17,17,.05);
+  border:1px solid rgba(0,0,0,.04);
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  padding:8px;
+  padding:10px;
 }
 
 .side-grid .app-logo-wrap{
-  width:50px;
-  min-width:50px;
-  height:50px;
+  width:48px;
+  min-width:48px;
+  height:48px;
+  border-radius:14px;
 }
 
 .app-logo{
   width:100%;
   height:100%;
   object-fit:contain;
+  transition:transform .3s var(--ease);
 }
 
-.app-meta{flex:1}
+.app-meta{flex:1; min-width:0}
 
 .app-title{
   font-size:1rem;
-  font-weight:700;
-  margin:0 0 4px;
+  font-weight:650;
+  margin:0 0 3px;
+  letter-spacing:-.01em;
 }
 
 .app-note{
-  font-size:.9rem;
-  color:var(--muted);<button class="app-card" onclick="openExternal('https://www.nationwide.co.uk/house-price-index/')">
-  <div class="app-logo-wrap">
-    <img src="nationwide.png" class="app-logo" alt="Nationwide HPI">
-  </div>
-  <div class="app-meta">
-    <div class="app-title">Nationwide HPI</div>
-    <p class="app-note">House price index.</p>
-  </div>
-</button>
+  font-size:.87rem;
+  color:var(--muted);
   margin:0;
+  line-height:1.35;
 }
 
-.side-grid .app-title{font-size:.95rem;}
-.side-grid .app-note{font-size:.82rem;}
+.side-grid .app-title{font-size:.93rem;}
+.side-grid .app-note{font-size:.8rem;}
+
+/* NEW badge, for freshly added tools */
+.app-badge{
+  display:inline-block;
+  margin-left:6px;
+  padding:1px 8px;
+  border-radius:999px;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  background:rgba(225,190,74,.18);
+  color:#8a6d10;
+  vertical-align:middle;
+}
 
 /* CLIENT APPS */
 .client-app-list{
@@ -324,22 +429,35 @@ body{
   gap:16px;
   align-items:center;
   border:1px solid var(--line);
-  border-radius:22px;
-  padding:16px;
+  border-radius:var(--radius-lg);
+  padding:18px;
+  transition:box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+
+.client-app-row:hover{
+  box-shadow:var(--shadow-2);
+  border-color:var(--line-strong);
 }
 
 .client-btn{
   border:none;
-  border-radius:16px;
-  padding:12px 15px;
+  border-radius:var(--radius-md);
+  padding:13px 16px;
   min-width:220px;
   text-align:left;
-  font-weight:700;
+  font-weight:650;
+  font-size:.95rem;
   cursor:pointer;
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.client-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-2);
 }
 
 .client-btn.primary{
-  background:linear-gradient(180deg,#ecd37b 0%,#e1be4a 58%,#d6ae2d 100%);
+  background:linear-gradient(180deg,#f0dd93 0%,#e1be4a 55%,#d9b334 100%);
 }
 
 .client-btn.secondary{
@@ -348,18 +466,21 @@ body{
 }
 
 .client-copy h3{
-  margin:0 0 5px;
+  margin:0 0 4px;
+  font-size:1rem;
+  letter-spacing:-.01em;
 }
 
 .client-copy p{
   margin:0;
   color:var(--muted);
+  font-size:.89rem;
 }
 
 /* DEV TOOLS */
 .dev-tools{
-  margin-top:18px;
-  padding-top:14px;
+  margin-top:20px;
+  padding-top:16px;
   border-top:1px solid var(--line);
   display:flex;
   flex-wrap:wrap;
@@ -367,22 +488,28 @@ body{
 }
 
 .dev-link{
-  padding:7px 12px;
+  padding:7px 13px;
   border-radius:999px;
-  background:#f3f4f6;
-  border:1px solid rgba(0,0,0,.06);
+  background:var(--bg-soft);
+  border:1px solid var(--line);
   color:#4b5563;
   text-decoration:none;
-  font-size:.82rem;
+  font-size:.8rem;
   font-weight:600;
+  transition:background .2s var(--ease), transform .2s var(--ease);
+}
+
+.dev-link:hover{
+  background:#eeeef0;
+  transform:translateY(-1px);
 }
 
 .footer-note{
-  margin-top:14px;
-  padding-top:14px;
+  margin-top:16px;
+  padding-top:16px;
   border-top:1px solid var(--line);
   color:var(--muted);
-  font-size:.86rem;
+  font-size:.84rem;
 }
 
 /* RESPONSIVE */
@@ -395,7 +522,7 @@ body{
 @media(max-width:760px){
   .hero-head{
     flex-direction:column;
-    gap:10px;
+    gap:12px;
   }
 
   .hero-copy{
@@ -403,7 +530,7 @@ body{
   }
 
   .hero-logo{
-    width:95px;
+    width:92px;
   }
 
   .hero-actions{
@@ -430,11 +557,22 @@ body{
     min-width:0;
   }
 }
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;}
+}
 </style>
 </head>
 
 <body>
 <div class="page">
+
+<a class="dev-gear" href="dev-tools.html" target="_blank" rel="noopener noreferrer" aria-label="Developer tools" title="Developer tools">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M19.4 13.5c.06-.49.1-.99.1-1.5s-.04-1.01-.1-1.5l2.02-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.38.96a7.4 7.4 0 0 0-1.3-.75l-.36-2.53a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.53c-.47.2-.9.45-1.3.75l-2.38-.96a.5.5 0 0 0-.6.22L3.58 8.28a.5.5 0 0 0 .12.64L5.72 10.5c-.06.49-.1.99-.1 1.5s.04 1.01.1 1.5l-2.02 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.4.31.6.22l2.38-.96c.4.3.83.55 1.3.75l.36 2.53c.05.24.26.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.53c.47-.2.9-.45 1.3-.75l2.38.96c.2.09.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64L19.4 13.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>
+</a>
 
 <header class="hero">
   <div class="hero-head">
@@ -493,64 +631,117 @@ body{
 
 <section class="panel">
   <div class="panel-inner">
-    <div class="section-head">
-      <h2>Quick Links</h2>
-      <p class="panel-copy">Core systems and operational shortcuts. Each one opens in a new tab.</p>
+
+    <div class="subsection">
+      <div class="section-head">
+        <h2>Quick Links</h2>
+        <p class="panel-copy">Core systems and operational shortcuts. Each one opens in a new tab.</p>
+      </div>
+      <div class="quick-grid">
+
+        <button class="app-card" onclick="openExternal('https://rezi.dezrez.com/')">
+          <div class="app-logo-wrap"><img src="rezi-logo.png" class="app-logo" alt="Rezi"></div>
+          <div class="app-meta">
+            <div class="app-title">Rezi</div>
+            <p class="app-note">CRM access and live property records.</p>
+          </div>
+        </button>
+
+        <button class="app-card" onclick="openExternal('https://www.rightmove.co.uk/')">
+          <div class="app-logo-wrap"><img src="rmove.png" class="app-logo" alt="Rightmove"></div>
+          <div class="app-meta">
+            <div class="app-title">Rightmove</div>
+            <p class="app-note">Portal search and listings.</p>
+          </div>
+        </button>
+
+        <button class="app-card" onclick="openExternal('https://rmplus.rightmove.co.uk/login')">
+          <div class="app-logo-wrap"><img src="RMplus.png" class="app-logo" alt="RM Plus"></div>
+          <div class="app-meta">
+            <div class="app-title">Rightmove Plus</div>
+            <p class="app-note">Rightmove Plus login.</p>
+          </div>
+        </button>
+
+        <button class="app-card" onclick="openExternal('https://agents.countrywidesigns.com/')">
+          <div class="app-logo-wrap"><img src="countrywide.png" class="app-logo" alt="Countrywide"></div>
+          <div class="app-meta">
+            <div class="app-title">Countrywide</div>
+            <p class="app-note">Boards and contractor login.</p>
+          </div>
+        </button>
+
+      </div>
     </div>
 
-    <div class="quick-grid">
+    <div class="subsection">
+      <div class="section-head">
+        <h2>Lettings</h2>
+        <p class="panel-copy">Compliance, payments and letting operations.</p>
+      </div>
+      <div class="quick-grid">
 
-      <button class="app-card" onclick="openExternal('https://rezi.dezrez.com/')">
-        <div class="app-logo-wrap"><img src="rezi-logo.png" class="app-logo" alt="Rezi"></div>
-        <div class="app-meta">
-          <div class="app-title">Rezi</div>
-          <p class="app-note">CRM access and live property records.</p>
-        </div>
-      </button>
+        <button class="app-card" onclick="openExternal('https://dashboard.vouch.co.uk/wp-login.php')">
+          <div class="app-logo-wrap"><img src="vouch.png" class="app-logo" alt="Vouch"></div>
+          <div class="app-meta">
+            <div class="app-title">Vouch</div>
+            <p class="app-note">Compliance and onboarding dashboard.</p>
+          </div>
+        </button>
 
-      <button class="app-card" onclick="openExternal('https://dashboard.vouch.co.uk/wp-login.php')">
-        <div class="app-logo-wrap"><img src="vouch.png" class="app-logo" alt="Vouch"></div>
-        <div class="app-meta">
-          <div class="app-title">Vouch</div>
-          <p class="app-note">Compliance and onboarding dashboard.</p>
-        </div>
-      </button>
+        <button class="app-card" onclick="openExternal('https://app.payprop.com/')">
+          <div class="app-logo-wrap"><img src="Payprop.png" class="app-logo" alt="PayProp"></div>
+          <div class="app-meta">
+            <div class="app-title">PayProp</div>
+            <p class="app-note">Client money and tenancy payment platform.</p>
+          </div>
+        </button>
 
-      <button class="app-card" onclick="openExternal('https://app.payprop.com/')">
-        <div class="app-logo-wrap"><img src="Payprop.png" class="app-logo" alt="PayProp"></div>
-        <div class="app-meta">
-          <div class="app-title">PayProp</div>
-          <p class="app-note">Client money and tenancy payment platform.</p>
-        </div>
-      </button>
+        <button class="app-card" onclick="openExternal('https://secure.veriphy.co.uk/')">
+          <div class="app-logo-wrap"><img src="veriphy.png" class="app-logo" alt="VERIPHY"></div>
+          <div class="app-meta">
+            <div class="app-title">VERIPHY</div>
+            <p class="app-note">Verification and screening portal.</p>
+          </div>
+        </button>
 
-      <button class="app-card" onclick="openExternal('https://agents.countrywidesigns.com/')">
-        <div class="app-logo-wrap"><img src="countrywide.png" class="app-logo" alt="Countrywide"></div>
-        <div class="app-meta">
-          <div class="app-title">Countrywide</div>
-          <p class="app-note">Boards and contractor login.</p>
-        </div>
-      </button>
+        <button class="app-card" onclick="openExternal('https://resolvr.pro/dashboard')">
+          <div class="app-logo-wrap"><img src="https://resolvr.pro/resolvr-wordmark-light.png" class="app-logo" alt="Resolvr.pro"></div>
+          <div class="app-meta">
+            <div class="app-title">Resolvr.pro<span class="app-badge">New</span></div>
+            <p class="app-note">AI repair reporting &amp; certificate tracker.</p>
+          </div>
+        </button>
 
-      <button class="app-card" onclick="openExternal('https://secure.veriphy.co.uk/')">
-        <div class="app-logo-wrap"><img src="veriphy.png" class="app-logo" alt="VERIPHY"></div>
-        <div class="app-meta">
-          <div class="app-title">VERIPHY</div>
-          <p class="app-note">Verification and screening portal.</p>
-        </div>
-      </button>
-
-      <button class="app-card" onclick="openExternal('https://www.icloud.com/numbers/0cenGudK529l4M6zsZW1Yuagg#TEST_ONLY_Stock_List_26_copy')">
-        <div class="app-logo-wrap">
-          <img src="stocklist.png" class="app-logo" alt="Stock List">
-        </div>
-        <div class="app-meta">
-          <div class="app-title">TEST ONLY Stock List</div>
-          <p class="app-note">Shared live sales and lettings spreadsheet.</p>
-        </div>
-      </button>
-
+      </div>
     </div>
+
+    <div class="subsection">
+      <div class="quick-grid">
+
+        <button class="app-card" onclick="openExternal('https://www.icloud.com/numbers/0cenGudK529l4M6zsZW1Yuagg#TEST_ONLY_Stock_List_26_copy')">
+          <div class="app-logo-wrap">
+            <img src="stocklist.png" class="app-logo" alt="Stock List">
+          </div>
+          <div class="app-meta">
+            <div class="app-title">TEST ONLY Stock List</div>
+            <p class="app-note">Shared live sales and lettings spreadsheet.</p>
+          </div>
+        </button>
+
+        <button class="app-card" onclick="openExternal('#')">
+          <div class="app-logo-wrap">
+            <img src="keyregister.png" class="app-logo" alt="Key Register">
+          </div>
+          <div class="app-meta">
+            <div class="app-title">TEST ONLY Key Register</div>
+            <p class="app-note">Shared key tracking spreadsheet.</p>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -582,14 +773,6 @@ body{
 
 </div>
 
-<div class="dev-tools">
-<a class="dev-link" href="https://vercel.com/simon-7025s-projects" target="_blank" rel="noopener noreferrer">Vercel</a>
-<a class="dev-link" href="https://github.com/Walliepig" target="_blank" rel="noopener noreferrer">GitHub</a>
-<a class="dev-link" href="https://resend.com/emails" target="_blank" rel="noopener noreferrer">Resend</a>
-<a class="dev-link" href="https://watermarkimage.com/en?preset=true&quality=100&type=image&horiz=Right&vert=Bottom&size=15&visibility=70" target="_blank" rel="noopener noreferrer">Watermark</a>
-<a class="dev-link" href="https://sso.godaddy.com" target="_blank" rel="noopener noreferrer">GoDaddy</a>
-</div>
-
 <div class="footer-note">
 Hint: keep this page open as your control screen.
 </div>
@@ -610,29 +793,19 @@ Hint: keep this page open as your control screen.
 
 <div class="side-grid">
 
-<button class="app-card" onclick="openExternal('https://rmplus.rightmove.co.uk/login')">
-<div class="app-logo-wrap"><img src="RMplus.png" class="app-logo" alt="RM Plus"></div>
-<div class="app-meta"><div class="app-title">RM Plus</div><p class="app-note">Rightmove Plus login.</p></div>
-</button>
-
 <button class="app-card" onclick="openExternal('https://auth.land.tech/u/login')">
 <div class="app-logo-wrap"><img src="Landinsight.png" class="app-logo" alt="LandInsight"></div>
 <div class="app-meta"><div class="app-title">LandInsight</div><p class="app-note">Planning and site data.</p></div>
 </button>
 
-<button class="app-card" onclick="openExternal('https://www2.promap.co.uk/#/login')">
-<div class="app-logo-wrap"><img src="PromapV2.png" class="app-logo" alt="Promap V2"></div>
-<div class="app-meta"><div class="app-title">Promap V2</div><p class="app-note">Mapping tools.</p></div>
-</button>
-
-<button class="app-card" onclick="openExternal('https://pa.sefton.gov.uk/online-applications/')">
-<div class="app-logo-wrap"><img src="sefton-planning.png" class="app-logo" alt="Sefton Planning"></div>
-<div class="app-meta"><div class="app-title">Sefton Planning</div><p class="app-note">Planning search.</p></div>
-</button>
-
 <button class="app-card" onclick="openExternal('https://account.spectre.uk.com/login')">
 <div class="app-logo-wrap"><img src="spectre.png" class="app-logo" alt="Spectre"></div>
 <div class="app-meta"><div class="app-title">Spectre</div><p class="app-note">Lead farming.</p></div>
+</button>
+
+<button class="app-card" onclick="openExternal('https://www.zoopla.co.uk/house-prices/')">
+<div class="app-logo-wrap"><img src="zoopla.png" class="app-logo" alt="Zoopla"></div>
+<div class="app-meta"><div class="app-title">Zoopla</div><p class="app-note">Comparables.</p></div>
 </button>
 
 <button class="app-card" onclick="openExternal('https://www.nationwide.co.uk/house-price-index/')">
@@ -643,21 +816,16 @@ Hint: keep this page open as your control screen.
 <div class="app-title">Nationwide HPI</div>
 <p class="app-note">House price index.</p>
 </div>
-</button>  
-
-<button class="app-card" onclick="openExternal('https://www.rightmove.co.uk/')">
-<div class="app-logo-wrap">
-<img src="rmove.png" class="app-logo" alt="Rightmove">
-</div>
-<div class="app-meta">
-<div class="app-title">Rightmove</div>
-<p class="app-note">Portal search and listings.</p>
-</div>
 </button>
 
-<button class="app-card" onclick="openExternal('https://www.zoopla.co.uk/house-prices/')">
-<div class="app-logo-wrap"><img src="zoopla.png" class="app-logo" alt="Zoopla"></div>
-<div class="app-meta"><div class="app-title">Zoopla</div><p class="app-note">Comparables.</p></div>
+<button class="app-card" onclick="openExternal('https://www2.promap.co.uk/#/login')">
+<div class="app-logo-wrap"><img src="PromapV2.png" class="app-logo" alt="Promap V2"></div>
+<div class="app-meta"><div class="app-title">Promap V2</div><p class="app-note">Mapping tools.</p></div>
+</button>
+
+<button class="app-card" onclick="openExternal('https://find-energy-certificate.service.gov.uk/find-a-certificate/search-by-postcode?lang=en&property_type=domestic')">
+<div class="app-logo-wrap"><img src="EPC.png" class="app-logo" alt="EPC Search"></div>
+<div class="app-meta"><div class="app-title">EPC Search</div><p class="app-note">Find EPCs.</p></div>
 </button>
 
 <button class="app-card" onclick="openExternal('https://search-property-information.service.gov.uk')">
@@ -665,9 +833,14 @@ Hint: keep this page open as your control screen.
 <div class="app-meta"><div class="app-title">Land Registry</div><p class="app-note">Title search.</p></div>
 </button>
 
-<button class="app-card" onclick="openExternal('https://find-energy-certificate.service.gov.uk/find-a-certificate/search-by-postcode?lang=en&property_type=domestic')">
-<div class="app-logo-wrap"><img src="EPC.png" class="app-logo" alt="EPC Search"></div>
-<div class="app-meta"><div class="app-title">EPC Search</div><p class="app-note">Find EPCs.</p></div>
+<button class="app-card" onclick="openExternal('https://pa.sefton.gov.uk/online-applications/')">
+<div class="app-logo-wrap"><img src="sefton-planning.png" class="app-logo" alt="Sefton Planning"></div>
+<div class="app-meta"><div class="app-title">Sefton Planning</div><p class="app-note">Planning search.</p></div>
+</button>
+
+<button class="app-card" onclick="openExternal('https://pa.westlancs.gov.uk/online-applications/')">
+<div class="app-logo-wrap"><img src="westlancs-planning.png" class="app-logo" alt="West Lancs Planning"></div>
+<div class="app-meta"><div class="app-title">West Lancs Planning</div><p class="app-note">Planning search.</p></div>
 </button>
 
 </div>
