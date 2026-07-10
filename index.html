@@ -322,7 +322,8 @@ body{
 /* SIDE BAR */
 .side-grid{
   display:grid;
-  gap:8px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
 }
 
 /* CARDS */
@@ -331,12 +332,13 @@ body{
   border:1px solid var(--line);
   background:#fff;
   border-radius:var(--radius-lg);
-  padding:14px;
+  padding:14px 12px;
   display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:12px;
+  gap:10px;
   cursor:pointer;
-  text-align:left;
+  text-align:center;
   box-shadow:var(--shadow-1);
   transition:transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
 }
@@ -352,13 +354,12 @@ body{
 }
 
 .side-grid .app-card{
-  padding:10px;
+  padding:14px 8px;
 }
 
 .app-logo-wrap{
-  width:var(--logo-box);
-  min-width:var(--logo-box);
-  height:var(--logo-box);
+  width:100%;
+  height:76px;
   border-radius:var(--radius-md);
   background:var(--bg-soft);
   border:1px solid rgba(0,0,0,.04);
@@ -366,13 +367,12 @@ body{
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  padding:10px;
+  padding:12px;
 }
 
 .side-grid .app-logo-wrap{
-  width:48px;
-  min-width:48px;
-  height:48px;
+  width:100%;
+  height:60px;
   border-radius:14px;
 }
 
@@ -383,24 +383,21 @@ body{
   transition:transform .3s var(--ease);
 }
 
-.app-meta{flex:1; min-width:0}
+.app-meta{width:100%; min-width:0}
 
 .app-title{
-  font-size:1rem;
+  font-size:.92rem;
   font-weight:650;
-  margin:0 0 3px;
+  margin:0;
   letter-spacing:-.01em;
+  line-height:1.25;
 }
 
 .app-note{
-  font-size:.87rem;
-  color:var(--muted);
-  margin:0;
-  line-height:1.35;
+  display:none;
 }
 
-.side-grid .app-title{font-size:.93rem;}
-.side-grid .app-note{font-size:.8rem;}
+.side-grid .app-title{font-size:.85rem;}
 
 /* NEW badge, for freshly added tools */
 .app-badge{
@@ -515,7 +512,8 @@ body{
 /* RESPONSIVE */
 @media(max-width:980px){
   .layout{grid-template-columns:1fr;}
-  .quick-grid{grid-template-columns:1fr;}
+  .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .side-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
   .hero-actions{flex-wrap:wrap;}
 }
 
@@ -546,6 +544,14 @@ body{
   .social-row{
     justify-content:center;
     width:100%;
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .side-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
   }
 
   .client-app-row{
@@ -706,7 +712,7 @@ body{
       </button>
 
       <button class="app-card" onclick="openExternal('https://resolvr.pro/dashboard')">
-        <div class="app-logo-wrap"><img src="https://resolvr.pro/resolvr-wordmark-light.png" class="app-logo" alt="Resolvr.pro"></div>
+        <div class="app-logo-wrap"><img src="Resolvr.png" class="app-logo" alt="Resolvr.pro"></div>
         <div class="app-meta">
           <div class="app-title">Resolvr.pro<span class="app-badge">New</span></div>
           <p class="app-note">AI repair reporting &amp; certificate tracker.</p>
