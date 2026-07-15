@@ -130,6 +130,171 @@ h1{
   transform:translateX(3px);
   color:var(--text);
 }
+
+/* LINK MANAGER */
+.section-divider{
+  margin:40px 0 24px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
+
+.section-divider h2{
+  margin:0 0 6px;
+  font-size:1.4rem;
+  letter-spacing:-.03em;
+  font-weight:650;
+}
+
+.section-divider p{
+  margin:0;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.5;
+}
+
+.link-group{
+  margin-top:22px;
+}
+
+.link-group-label{
+  margin:0 0 10px;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.link-row{
+  display:grid;
+  grid-template-columns:150px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin-bottom:8px;
+  background:#fff;
+}
+
+.link-row-name{
+  font-weight:650;
+  font-size:.88rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.link-row input{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:9px 12px;
+  font:inherit;
+  font-size:.85rem;
+  color:var(--text);
+  background:var(--bg-soft);
+  outline:none;
+  transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.link-row input:focus{
+  border-color:var(--line-strong);
+  box-shadow:0 0 0 3px rgba(225,190,74,.16);
+  background:#fff;
+}
+
+.link-row input.is-overridden{
+  border-color:rgba(225,190,74,.6);
+  background:rgba(225,190,74,.06);
+}
+
+.link-row-reset{
+  border:none;
+  background:transparent;
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:600;
+  cursor:pointer;
+  padding:6px 8px;
+  border-radius:8px;
+  white-space:nowrap;
+  transition:background .2s var(--ease), color .2s var(--ease);
+}
+
+.link-row-reset:hover{
+  background:var(--bg-soft);
+  color:var(--text);
+}
+
+.link-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+
+.save-btn{
+  border:none;
+  border-radius:999px;
+  padding:11px 22px;
+  font:inherit;
+  font-size:.9rem;
+  font-weight:650;
+  cursor:pointer;
+  background:linear-gradient(180deg,#f0dd93 0%,#e1be4a 55%,#d9b334 100%);
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.save-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-2);
+}
+
+.reset-all-btn{
+  border:none;
+  background:transparent;
+  color:var(--muted);
+  font-size:.84rem;
+  font-weight:600;
+  cursor:pointer;
+  text-decoration:underline;
+}
+
+.reset-all-btn:hover{
+  color:var(--text);
+}
+
+.save-status{
+  font-size:.84rem;
+  color:#4a8a4a;
+  font-weight:600;
+  opacity:0;
+  transition:opacity .3s var(--ease);
+}
+
+.save-status.visible{
+  opacity:1;
+}
+
+.storage-note{
+  margin-top:20px;
+  padding:14px 18px;
+  border-radius:14px;
+  background:var(--bg-soft);
+  color:var(--muted);
+  font-size:.82rem;
+  line-height:1.5;
+}
+
+@media(max-width:640px){
+  .link-row{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
@@ -189,7 +354,155 @@ h1{
     <span class="dev-arrow">&rarr;</span>
   </a>
 
+  <a class="dev-row" href="https://supabase.com/dashboard" target="_blank" rel="noopener noreferrer">
+    <div>
+      <div class="dev-name">Supabase</div>
+      <p class="dev-desc">Database and backend.</p>
+    </div>
+    <span class="dev-arrow">&rarr;</span>
+  </a>
+
+  <a class="dev-row" href="https://app.netlify.com/" target="_blank" rel="noopener noreferrer">
+    <div>
+      <div class="dev-name">Netlify</div>
+      <p class="dev-desc">Hosting and deployments.</p>
+    </div>
+    <span class="dev-arrow">&rarr;</span>
+  </a>
+
 </div>
+
+<div class="section-divider">
+  <h2>Link Manager</h2>
+  <p>Edit where each icon on the Launch Pad points, without touching the code. Changes save to this browser and apply next time you load the Launch Pad here.</p>
+</div>
+
+<div id="link-manager"></div>
+
+<div class="link-actions">
+  <div style="display:flex; align-items:center; gap:14px;">
+    <button class="save-btn" id="save-links-btn">Save changes</button>
+    <button class="reset-all-btn" id="reset-all-btn">Reset all to defaults</button>
+  </div>
+  <span class="save-status" id="save-status">Saved</span>
+</div>
+
+<div class="storage-note">
+  These edits are stored in this browser only (not synced across devices or team members). If you need everyone to see the same links, the safest source of truth is still editing the values in GitHub directly.
+</div>
+
+<script>
+const LINK_OVERRIDE_KEY = 'smea-link-overrides';
+
+const LINK_ITEMS = [
+  { group: 'Quick Links', id: 'rezi', name: 'Rezi', defaultUrl: 'https://rezi.dezrez.com/' },
+  { group: 'Quick Links', id: 'rightmove', name: 'Rightmove', defaultUrl: 'https://www.rightmove.co.uk/' },
+  { group: 'Quick Links', id: 'rightmove-plus', name: 'Rightmove Plus', defaultUrl: 'https://rmplus.rightmove.co.uk/login' },
+  { group: 'Quick Links', id: 'countrywide', name: 'Countrywide', defaultUrl: 'https://agents.countrywidesigns.com/' },
+
+  { group: 'Lettings', id: 'goodlord', name: 'Goodlord', defaultUrl: 'https://app.goodlord.co/' },
+  { group: 'Lettings', id: 'payprop', name: 'PayProp', defaultUrl: 'https://uk.payprop.com/login' },
+  { group: 'Lettings', id: 'veriphy', name: 'VERIPHY', defaultUrl: 'https://secure.veriphy.co.uk/' },
+  { group: 'Lettings', id: 'resolvr', name: 'Resolvr.pro', defaultUrl: 'https://resolvr.pro/dashboard' },
+
+  { group: 'Test bar', id: 'stocklist', name: 'TEST ONLY Stock List', defaultUrl: 'https://www.icloud.com/numbers/0cenGudK529l4M6zsZW1Yuagg#TEST_ONLY_Stock_List_26_copy' },
+  { group: 'Test bar', id: 'keyregister', name: 'TEST ONLY Key Register', defaultUrl: '#' },
+
+  { group: 'Client Apps', id: 'property-launcher', name: 'Property Information App', defaultUrl: '/property-launcher.html' },
+  { group: 'Client Apps', id: 'aml-launcher', name: 'AML Upload App', defaultUrl: '/aml-launcher.html' },
+
+  { group: 'Research Bar', id: 'landinsight', name: 'LandInsight', defaultUrl: 'https://auth.land.tech/u/login' },
+  { group: 'Research Bar', id: 'spectre', name: 'Spectre', defaultUrl: 'https://account.spectre.uk.com/login' },
+  { group: 'Research Bar', id: 'zoopla', name: 'Zoopla', defaultUrl: 'https://www.zoopla.co.uk/house-prices/' },
+  { group: 'Research Bar', id: 'nationwide', name: 'Nationwide HPI', defaultUrl: 'https://www.nationwide.co.uk/house-price-index/' },
+  { group: 'Research Bar', id: 'promap', name: 'Promap V2', defaultUrl: 'https://www2.promap.co.uk/#/login' },
+  { group: 'Research Bar', id: 'epc', name: 'EPC Search', defaultUrl: 'https://find-energy-certificate.service.gov.uk/find-a-certificate/search-by-postcode?lang=en&property_type=domestic' },
+  { group: 'Research Bar', id: 'landregistry', name: 'Land Registry', defaultUrl: 'https://search-property-information.service.gov.uk' },
+  { group: 'Research Bar', id: 'sefton-planning', name: 'Sefton Planning', defaultUrl: 'https://pa.sefton.gov.uk/online-applications/' },
+  { group: 'Research Bar', id: 'westlancs-planning', name: 'West Lancs Planning', defaultUrl: 'https://pa.westlancs.gov.uk/online-applications/' },
+];
+
+function getOverrides(){
+  try{
+    return JSON.parse(localStorage.getItem(LINK_OVERRIDE_KEY)) || {};
+  }catch(e){
+    return {};
+  }
+}
+
+function saveOverrides(overrides){
+  localStorage.setItem(LINK_OVERRIDE_KEY, JSON.stringify(overrides));
+}
+
+function renderLinkManager(){
+  const container = document.getElementById('link-manager');
+  const overrides = getOverrides();
+  const groups = [...new Set(LINK_ITEMS.map(i => i.group))];
+
+  container.innerHTML = groups.map(group => {
+    const rows = LINK_ITEMS.filter(i => i.group === group).map(item => {
+      const current = overrides[item.id] || item.defaultUrl;
+      const isOverridden = !!overrides[item.id];
+      return `
+        <div class="link-row">
+          <div class="link-row-name">${item.name}</div>
+          <input type="text" data-item-id="${item.id}" value="${current.replace(/"/g,'&quot;')}" class="${isOverridden ? 'is-overridden' : ''}">
+          <button class="link-row-reset" data-reset-id="${item.id}">Reset</button>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <div class="link-group">
+        <p class="link-group-label">${group}</p>
+        ${rows}
+      </div>
+    `;
+  }).join('');
+
+  container.querySelectorAll('[data-reset-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.resetId;
+      const overrides = getOverrides();
+      delete overrides[id];
+      saveOverrides(overrides);
+      renderLinkManager();
+      flashStatus('Reset');
+    });
+  });
+}
+
+function flashStatus(text){
+  const status = document.getElementById('save-status');
+  status.textContent = text;
+  status.classList.add('visible');
+  setTimeout(() => status.classList.remove('visible'), 1800);
+}
+
+document.getElementById('save-links-btn').addEventListener('click', () => {
+  const overrides = getOverrides();
+  document.querySelectorAll('#link-manager input[data-item-id]').forEach(input => {
+    const item = LINK_ITEMS.find(i => i.id === input.dataset.itemId);
+    const value = input.value.trim();
+    if(!value || value === item.defaultUrl){
+      delete overrides[item.id];
+    } else {
+      overrides[item.id] = value;
+    }
+  });
+  saveOverrides(overrides);
+  renderLinkManager();
+  flashStatus('Saved');
+});
+
+document.getElementById('reset-all-btn').addEventListener('click', () => {
+  localStorage.removeItem(LINK_OVERRIDE_KEY);
+  renderLinkManager();
+  flashStatus('All reset');
+});
+
+renderLinkManager();
+</script>
 
 </div>
 </body>
